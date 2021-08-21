@@ -1,5 +1,4 @@
 import React from "react";
-import { Nullable } from "unsplash-js/dist/helpers/typescript";
 import { Basic } from "../helpers/types";
 
 const Photo = (photo: Basic): JSX.Element => {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createApi } from "unsplash-js";
 import { Data } from "../helpers/types";
-import Photo from "./Photo";
 
 const API = createApi({
   accessKey: "ntQWhYoc7SD4SIE_wjgR-HivgCHodVy85UTVX_YZoB8",
