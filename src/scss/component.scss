@@ -1,1 +1,65 @@
 //styles for every component necessary for that project, including buttons, modals, etc.
+
+//filter component
+
+.filter {
+  #filter--side-container {
+    height: 600px;
+    width: 0;
+    left: 0;
+    top: 0;
+    background: rgba(173, 173, 173, 0.301);
+    //box-shadow: 0 0 10px 0 rgb(0 0 0 / 70%);
+    transition: width ease 0.5s;
+    overflow: hidden;
+    display: block;
+    /*   .filter--side-content {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 15px;
+    height: 100%;
+    color: #f2f2f2;
+  }
+  .filter--side-box {
+    box-shadow: 0 2px 6px rgb(50 50 93 / 20%);
+    background-color: #454545;
+    padding: 10px;
+    color: #f2f2f2;
+    margin: 0 0 20px 0;
+    border-radius: 4px;
+  }
+  .filter--side-content-main-title {
+    text-align: center;
+    margin: 0 0 10px 0;
+  } */
+  }
+}
+
+.close-btn {
+  left: 550px;
+  width: 26px;
+  height: 26px;
+  color: #0d0d0d;
+  top: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  z-index: 2;
+  padding: 3px 2px;
+  line-height: 8px;
+  margin: 10px;
+  font-size: 2em;
+  border: none;
+  background: transparent;
+}
+
+.close-btn:before {
+  box-sizing: border-box;
+}
+
+.close-btn:before {
+  box-sizing: border-box;
+}
+.close-btn:hover {
+  color: #616060;
+}

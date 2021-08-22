@@ -1,40 +1,32 @@
-import React, { ButtonHTMLAttributes, useEffect } from "react";
-import { createApi } from "unsplash-js";
-import { Data } from "../helpers/types";
-import Result from "./Result";
-
-const API = createApi({
-  accessKey: "ntQWhYoc7SD4SIE_wjgR-HivgCHodVy85UTVX_YZoB8",
-});
+import React, { useState } from "react";
+import { Query } from "../helpers/types";
 
 interface SearchBarProps {
-  setDataState: (photosReponse: Data) => void;
-  data: Data | undefined;
+  query: Query | undefined;
+  setDataQuery: (queryToSet: Query) => void;
+  searchPhotos: () => void;
 }
 
-const SearchBar = ({ setDataState, data }: SearchBarProps): JSX.Element => {
-  const handleSubmitButton = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log("entrou");
-    API.search
-      .getPhotos({ query: "cat", orientation: "landscape" })
-      .then((result) => {
-        setDataState(result as unknown as Data);
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(`something went wrong!${error}`);
-      });
+const SearchBar = ({
+  query,
+  setDataQuery,
+  searchPhotos,
+}: SearchBarProps): JSX.Element => {
+  const [input, setInput] = useState("");
+  const handleSubmitButton = (event: any) => {
+    event.preventDefault();
+    if (query) {
+      setDataQuery({ ...query, query: input });
+      searchPhotos();
+    }
   };
-
-  if (data === null) {
-    return <div>Loading...</div>;
-  }
-
+  const handleChange = (event: any) => {
+    setInput(event.target.value);
+    console.log(event.target.value);
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmitButton}>
         <input
           style={{ width: "300px" }}
           type="text"
@@ -42,8 +34,9 @@ const SearchBar = ({ setDataState, data }: SearchBarProps): JSX.Element => {
           placeholder="Enter your search term here"
           autoComplete="on"
           required
+          onChange={handleChange}
         />
-        <button type="submit" value="search" onClick={handleSubmitButton}>
+        <button type="submit" value="submit">
           <i className="icon--search" />
           search
         </button>

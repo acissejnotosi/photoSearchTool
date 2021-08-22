@@ -72,3 +72,34 @@ export declare interface Data {
   errors?: undefined;
   status: number;
 }
+
+type Color =
+  | "black_and_white"
+  | "black"
+  | "white"
+  | "yellow"
+  | "orange"
+  | "red"
+  | "purple"
+  | "magenta"
+  | "green"
+  | "teal"
+  | "blue";
+
+type ContentFilter = "low" | "high";
+
+type Orientation = "landscape" | "portrait" | "squarish";
+
+type OrderBy = "low" | "high";
+
+export declare interface Query {
+  query: string;
+  page: number;
+  perPage: number;
+  orientation: Orientation;
+  contentFilter: ContentFilter;
+  color: Color;
+  orderBy: OrderBy;
+  collectionIds: [];
+  lang: string;
+}

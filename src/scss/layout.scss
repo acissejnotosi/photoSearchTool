@@ -1,4 +1,9 @@
 // there are the styles for the header, footer, the grid system, etc
+.box {
+  color: black;
+  font-size: 150%;
+  padding: 10px;
+}
 .header {
   grid-area: header;
   background-color: #999;
@@ -10,6 +15,9 @@
 }
 .section {
   grid-area: section;
+  &.box {
+    padding-left: 0;
+  }
 }
 .sidebar {
   grid-area: sidebar;
@@ -25,6 +33,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
+  &.box {
+    padding-left: 0;
+  }
 }
 .navegation {
   grid-area: navegation;
@@ -48,11 +59,7 @@
     "content"
     "footer";
 }
-.box {
-  color: black;
-  font-size: 150%;
-  padding: 10px;
-}
+
 @media only screen and (min-width: 500px) {
   .wrapper {
     grid-template-columns: 20% auto;
