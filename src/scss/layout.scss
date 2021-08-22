@@ -1,0 +1,108 @@
+// there are the styles for the header, footer, the grid system, etc
+.header {
+  grid-area: header;
+  background-color: #999;
+}
+.search {
+  grid-area: search;
+  background-color: #ccc;
+  color: #444;
+}
+.section {
+  grid-area: section;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.sidebar2 {
+  grid-area: sidebar2;
+  background-color: #ccc;
+  color: #444;
+  width: 0px;
+}
+.content {
+  grid-area: content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.navegation {
+  grid-area: navegation;
+}
+.footer {
+  grid-area: footer;
+  background-color: #999;
+  width: 100%;
+  text-align: center;
+}
+.wrapper {
+  background-color: #fff;
+  color: #444;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-areas:
+    "header"
+    "search"
+    "sidebar"
+    "sidebar2"
+    "content"
+    "footer";
+}
+.box {
+  color: black;
+  font-size: 150%;
+  padding: 10px;
+}
+@media only screen and (min-width: 500px) {
+  .wrapper {
+    grid-template-columns: 20% auto;
+    grid-template-areas:
+      "header header"
+      "search search"
+      "section section"
+      "navegation navegation"
+      "footer footer";
+  }
+}
+@media only screen and (min-width: 600px) {
+  .wrapper {
+    grid-gap: 20px;
+    grid-template-columns: 600px auto 600px;
+    grid-template-areas:
+      "header  header  header"
+      "search search  search"
+      "section section section"
+      "... navegation ..."
+      "footer  footer  footer";
+    max-width: 100%;
+  }
+}
+.wrapper2 {
+  background-color: #fff;
+  color: #444;
+  display: grid;
+  border-color: none;
+  grid-gap: 1em;
+  grid-template-areas:
+    "sidebar"
+    "content";
+}
+
+@media only screen and (min-width: 500px) {
+  .wrapper2 {
+    grid-template-columns: 20% auto;
+    grid-template-areas:
+      "sidebar sidebar"
+      "content content";
+  }
+}
+@media only screen and (min-width: 600px) {
+  .wrapper2 {
+    grid-gap: 20px;
+    grid-template-columns: 600px auto 600px;
+    grid-template-areas:
+      "sidebar sidebar sidebar"
+      "content content content";
+    max-width: 100%;
+  }
+}

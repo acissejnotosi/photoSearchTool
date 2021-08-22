@@ -3,9 +3,9 @@ import { Nullable } from "unsplash-js/dist/helpers/typescript";
 export declare interface User {
   id: string;
   bio: Nullable<string>;
-  first_name: string;
-  instagram_username: Nullable<string>;
-  last_name: Nullable<string>;
+  firstName: string;
+  instagramUsername: Nullable<string>;
+  lastName: Nullable<string>;
   links: {
     followers: string;
     following: string;
@@ -17,23 +17,23 @@ export declare interface User {
   };
   location: Nullable<string>;
   name: string;
-  portfolio_url: Nullable<string>;
-  profile_image: {
+  portfolioUrl: Nullable<string>;
+  profileImage: {
     small: string;
     medium: string;
     large: string;
   };
-  total_collections: number;
-  total_likes: number;
-  total_photos: number;
-  twitter_username: Nullable<string>;
-  updated_at: string;
+  totalCollections: number;
+  totalLikes: number;
+  totalPhotos: number;
+  twitterUsername: Nullable<string>;
+  updatedAt: string;
   username: string;
 }
 
 export declare interface Basic {
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
   urls: {
     full: string;
     raw: string;
@@ -42,8 +42,8 @@ export declare interface Basic {
     thumb: string;
   };
   id: string;
-  alt_description: Nullable<string>;
-  blur_hash: Nullable<string>;
+  altDescription: Nullable<string>;
+  blurHash: Nullable<string>;
   color: Nullable<string>;
   description: Nullable<string>;
   height: number;
@@ -51,10 +51,10 @@ export declare interface Basic {
   links: {
     self: string;
     html: string;
-    download: string;   
-    download_location: string;
+    download: string;
+    downloadLocation: string;
   };
-  promoted_at: Nullable<string>;
+  promotedAt: Nullable<string>;
   width: number;
   user: User;
 }
@@ -62,7 +62,7 @@ export declare interface Basic {
 export declare interface Photos {
   results: Basic[];
   total: number;
-  total_pages: number;
+  totalPages: number;
 }
 
 export declare interface Data {

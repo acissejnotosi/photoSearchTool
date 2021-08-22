@@ -1,9 +1,12 @@
 import React from "react";
 import { Basic } from "../helpers/types";
 
-const Photo = (photo: Basic): JSX.Element => {
-  const { color } = photo;
-  return <div> {color}</div>;
+type PhotoProps = {
+  photo: Basic | undefined;
+};
+
+const Photo = ({ photo }: PhotoProps): JSX.Element => {
+  return <div> {photo?.id}</div>;
 };
 
 export default Photo;
