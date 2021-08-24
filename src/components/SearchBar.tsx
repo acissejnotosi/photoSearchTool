@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Query } from "../helpers/types";
+import { useAppDispatch } from "../redux/hooks";
+import { updateQuery } from "../redux/slices/query";
 
-interface SearchBarProps {
-  query: Query | undefined;
-  setDataQuery: (queryToSet: Query) => void;
-}
-
-const SearchBar = ({ query, setDataQuery }: SearchBarProps): JSX.Element => {
+const SearchBar = (): JSX.Element => {
   const [input, setInput] = useState("");
+  const dispatch = useAppDispatch();
   const handleSubmitButton = (event: any) => {
     event.preventDefault();
-    setDataQuery({ ...query, query: input });
+    dispatch(updateQuery(input));
   };
   const handleChange = (event: any) => {
     setInput(event.target.value);

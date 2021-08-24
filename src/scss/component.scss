@@ -8,7 +8,6 @@
     width: 0;
     left: 0;
     top: 0;
-    background: rgba(173, 173, 173, 0.301);
     //box-shadow: 0 0 10px 0 rgb(0 0 0 / 70%);
     transition: width ease 0.5s;
     overflow: hidden;
@@ -62,4 +61,16 @@
 }
 .close-btn:hover {
   color: #616060;
+}
+
+//Header
+
+.image-container {
+  display: flex;
+  justify-content: flex-start;
+  .image-container--logo {
+    width: 200px; /* width of container */
+    height: 70px; /* height of container */
+    object-fit: cover;
+  }
 }

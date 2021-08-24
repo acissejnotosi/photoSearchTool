@@ -1,17 +1,25 @@
 // there are the styles for the header, footer, the grid system, etc
+
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Raleway&display=swap");
+
+body {
+  background-color: #f2f2f2;
+  font-family: "Raleway", sans-serif;
+}
+
 .box {
-  color: black;
+  color: #0a2326;
   font-size: 150%;
   padding: 10px;
 }
 .header {
   grid-area: header;
-  background-color: #999;
+  background-color: #475459;
 }
 .search {
   grid-area: search;
-  background-color: #ccc;
-  color: #444;
+  background-color: #f2f2f2;
+  color: #0a2326;
 }
 .section {
   grid-area: section;
@@ -21,12 +29,7 @@
 }
 .sidebar {
   grid-area: sidebar;
-}
-.sidebar2 {
-  grid-area: sidebar2;
-  background-color: #ccc;
-  color: #444;
-  width: 0px;
+  background-color: #f2f2f2;
 }
 .content {
   grid-area: content;
@@ -42,13 +45,11 @@
 }
 .footer {
   grid-area: footer;
-  background-color: #999;
   width: 100%;
   text-align: center;
+  background-color: #475459;
 }
 .wrapper {
-  background-color: #fff;
-  color: #444;
   display: grid;
   grid-gap: 1em;
   grid-template-areas:
@@ -84,8 +85,6 @@
   }
 }
 .wrapper2 {
-  background-color: #fff;
-  color: #444;
   display: grid;
   border-color: none;
   grid-gap: 1em;
@@ -112,3 +111,27 @@
     max-width: 100%;
   }
 }
+
+/* Color Theme Swatches in Hex */
+.empty-floor-with-modern-cityscape-in-new-york-1-hex {
+  color: #475459;
+}
+.empty-floor-with-modern-cityscape-in-new-york-2-hex {
+  color: #93b7bf;
+}
+.empty-floor-with-modern-cityscape-in-new-york-3-hex {
+  color: #f2f2f2;
+}
+.empty-floor-with-modern-cityscape-in-new-york-4-hex {
+  color: #d9d9d9;
+}
+.empty-floor-with-modern-cityscape-in-new-york-5-hex {
+  color: #0d0d0d;
+}
+
+/* Color Theme Swatches in Hex */
+$Tema-de-cores-9-1-hex: #f2f2f2;
+$Tema-de-cores-9-2-hex: #475459;
+$Tema-de-cores-9-3-hex: #0a2326;
+$Tema-de-cores-9-4-hex: #83a64e;
+$Tema-de-cores-9-5-hex: #e0b692;

@@ -26,9 +26,7 @@ export const fetchData: any = createAsyncThunk<
     rejectValue: MyKnownError;
   }
 >("data/fetchByQuery", async (query, thunkAPI) => {
-  const response = await API.search.getPhotos({
-    query: query.query,
-  });
+  const response = await API.search.getPhotos(query);
   if (response.status === 400) {
     // Return the known error for future handling
     return thunkAPI.rejectWithValue(response as unknown as MyKnownError);
