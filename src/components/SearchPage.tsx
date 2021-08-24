@@ -1,40 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createApi } from "unsplash-js";
-import { Data, Query } from "../helpers/types";
+import { Query } from "../helpers/types";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import "../scss/main.scss";
 import Footer from "./Footer";
 import Result from "./Result";
-import Navegation from "./Navegation";
+import Pagination from "./Pagination";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { fetchData } from "../redux/slices/data";
 
 const API = createApi({
   accessKey: "ntQWhYoc7SD4SIE_wjgR-HivgCHodVy85UTVX_YZoB8",
 });
 
 const SearchPage = (): JSX.Element => {
-  const [data, setPhotosResponse] = useState<Data>();
-  const [query, setQuery] = useState<Query>();
-
-  const setDataState = (photosReponse: Data) => {
-    setPhotosResponse(photosReponse);
-  };
+  const dispatch = useAppDispatch();
+  const data = useAppSelector((state) => state.data.resp);
+  const [query, setQuery] = useState<Query>({
+    query: "",
+    page: 2,
+    perPage: 10,
+    orientation: "portrait",
+    contentFilter: "low",
+    color: undefined,
+    SearchOrderBy: "high",
+    collectionIds: undefined,
+    Language: "en",
+  });
 
   const setDataQuery = (queryToSet: Query) => {
     setQuery(queryToSet);
   };
 
-  const searchPhotos = () => {
-    API.search
-      .getPhotos({ query: "cat", orientation: "landscape" })
-      .then((result) => {
-        setDataState(result as unknown as Data);
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(`something went wrong!${error}`);
-      });
-  };
+  useEffect(() => {
+    async function handleUpdateData() {
+      const resultAction = await dispatch(fetchData(query));
+      console.log(resultAction.payload);
+      console.log(data);
+    }
+    handleUpdateData();
+  }, [query]);
 
   return (
     <div className="wrapper">
@@ -42,17 +48,13 @@ const SearchPage = (): JSX.Element => {
         <Header />
       </div>
       <div className="box search">
-        <SearchBar
-          setDataQuery={setDataQuery}
-          query={query}
-          searchPhotos={searchPhotos}
-        />
+        <SearchBar setDataQuery={setDataQuery} query={query} />
       </div>
       <div className="box section">
-        <Result data={data?.response.results} />
+        <Result />
       </div>
-      <div className="box navegation">
-        <Navegation />
+      <div className="box pagination">
+        <Pagination setDataQuery={setDataQuery} query={query} />
       </div>
       <div className="box footer">
         <Footer />

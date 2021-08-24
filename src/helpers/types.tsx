@@ -44,6 +44,7 @@ export declare interface Basic {
   id: string;
   altDescription: Nullable<string>;
   blurHash: Nullable<string>;
+  categories: string[];
   color: Nullable<string>;
   description: Nullable<string>;
   height: number;
@@ -94,12 +95,12 @@ type OrderBy = "low" | "high";
 
 export declare interface Query {
   query: string;
-  page: number;
-  perPage: number;
-  orientation: Orientation;
-  contentFilter: ContentFilter;
-  color: Color;
-  orderBy: OrderBy;
-  collectionIds: [];
-  lang: string;
+  page?: number;
+  perPage?: number;
+  orientation?: Orientation;
+  contentFilter?: ContentFilter;
+  color?: Color;
+  SearchOrderBy?: OrderBy;
+  collectionIds?: [];
+  Language?: string;
 }

@@ -4,25 +4,16 @@ import { Query } from "../helpers/types";
 interface SearchBarProps {
   query: Query | undefined;
   setDataQuery: (queryToSet: Query) => void;
-  searchPhotos: () => void;
 }
 
-const SearchBar = ({
-  query,
-  setDataQuery,
-  searchPhotos,
-}: SearchBarProps): JSX.Element => {
+const SearchBar = ({ query, setDataQuery }: SearchBarProps): JSX.Element => {
   const [input, setInput] = useState("");
   const handleSubmitButton = (event: any) => {
     event.preventDefault();
-    if (query) {
-      setDataQuery({ ...query, query: input });
-      searchPhotos();
-    }
+    setDataQuery({ ...query, query: input });
   };
   const handleChange = (event: any) => {
     setInput(event.target.value);
-    console.log(event.target.value);
   };
   return (
     <div>

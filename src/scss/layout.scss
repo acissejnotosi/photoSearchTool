@@ -37,8 +37,8 @@
     padding-left: 0;
   }
 }
-.navegation {
-  grid-area: navegation;
+.pagination {
+  grid-area: pagination;
 }
 .footer {
   grid-area: footer;
@@ -54,9 +54,8 @@
   grid-template-areas:
     "header"
     "search"
-    "sidebar"
-    "sidebar2"
-    "content"
+    "section"
+    "pagination"
     "footer";
 }
 
@@ -67,7 +66,7 @@
       "header header"
       "search search"
       "section section"
-      "navegation navegation"
+      "pagination pagination"
       "footer footer";
   }
 }
@@ -79,7 +78,7 @@
       "header  header  header"
       "search search  search"
       "section section section"
-      "... navegation ..."
+      "... pagination ..."
       "footer  footer  footer";
     max-width: 100%;
   }

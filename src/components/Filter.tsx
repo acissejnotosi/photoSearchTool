@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Query } from "../helpers/types";
 import "../scss/main.scss";
 
 const Filter = (): JSX.Element => {
@@ -20,6 +21,28 @@ const Filter = (): JSX.Element => {
           >
             &times;
           </button>
+          <h1>Color</h1>
+          <label className="container">
+            One
+            <input type="radio" checked name="radio" />
+            <span className="checkmark" />
+          </label>
+          <label className="container">
+            Two
+            <input type="radio" name="radio" />
+            <span className="checkmark" />
+          </label>
+          <label className="container">
+            Three
+            <input type="radio" name="radio" />
+            <span className="checkmark" />
+          </label>
+          <label className="container">
+            Four
+            <input type="radio" name="radio" />
+            <span className="checkmark" />
+          </label>
+          <div>Orientation</div>
         </div>
       </div>
     );
