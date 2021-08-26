@@ -2,39 +2,16 @@
 
 //filter component
 
-.filter {
-  #filter--side-container {
-    height: 600px;
-    width: 0;
-    left: 0;
-    top: 0;
-    //box-shadow: 0 0 10px 0 rgb(0 0 0 / 70%);
-    transition: width ease 0.5s;
-    overflow: hidden;
-    display: block;
-    /*   .filter--side-content {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 50px 15px;
-    height: 100%;
-    color: #f2f2f2;
-  }
-  .filter--side-box {
-    box-shadow: 0 2px 6px rgb(50 50 93 / 20%);
-    background-color: #454545;
-    padding: 10px;
-    color: #f2f2f2;
-    margin: 0 0 20px 0;
-    border-radius: 4px;
-  }
-  .filter--side-content-main-title {
-    text-align: center;
-    margin: 0 0 10px 0;
-  } */
-  }
+#filter--side-container {
+  height: 600px;
+  width: 0;
+  left: 0;
+  top: 0;
+  //box-shadow: 0 0 10px 0 rgb(0 0 0 / 70%);
+  transition: width ease 0.5s;
+  overflow: hidden;
+  display: block;
 }
-
 .close-btn {
   left: 550px;
   width: 26px;
@@ -51,11 +28,9 @@
   border: none;
   background: transparent;
 }
-
 .close-btn:before {
   box-sizing: border-box;
 }
-
 .close-btn:before {
   box-sizing: border-box;
 }
@@ -72,5 +47,16 @@
     width: 200px; /* width of container */
     height: 70px; /* height of container */
     object-fit: cover;
+  }
+}
+
+//photos
+
+.photos--image {
+  width: 100% !important;
+  height: auto !important;
+  margin: 10px;
+  &:hover {
+    opacity: 0.5;
   }
 }

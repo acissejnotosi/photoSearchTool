@@ -1,11 +1,12 @@
+/* eslint-disable camelcase */
 import { Nullable } from "unsplash-js/dist/helpers/typescript";
 
 export declare interface User {
   id: string;
   bio: Nullable<string>;
-  firstName: string;
-  instagramUsername: Nullable<string>;
-  lastName: Nullable<string>;
+  first_name: string;
+  instagram_username: Nullable<string>;
+  last_name: Nullable<string>;
   links: {
     followers: string;
     following: string;
@@ -17,23 +18,23 @@ export declare interface User {
   };
   location: Nullable<string>;
   name: string;
-  portfolioUrl: Nullable<string>;
-  profileImage: {
+  portfolio_url: Nullable<string>;
+  profile_image: {
     small: string;
     medium: string;
     large: string;
   };
-  totalCollections: number;
-  totalLikes: number;
-  totalPhotos: number;
-  twitterUsername: Nullable<string>;
-  updatedAt: string;
+  total_collections: number;
+  total_likes: number;
+  total_photos: number;
+  twitter_username: Nullable<string>;
+  updated_at: string;
   username: string;
 }
 
 export declare interface Basic {
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  updated_at: string;
   urls: {
     full: string;
     raw: string;
@@ -42,8 +43,8 @@ export declare interface Basic {
     thumb: string;
   };
   id: string;
-  altDescription: Nullable<string>;
-  blurHash: Nullable<string>;
+  alt_description: Nullable<string>;
+  blur_hash: Nullable<string>;
   categories: string[];
   color: Nullable<string>;
   description: Nullable<string>;
@@ -53,9 +54,9 @@ export declare interface Basic {
     self: string;
     html: string;
     download: string;
-    downloadLocation: string;
+    download_location: string;
   };
-  promotedAt: Nullable<string>;
+  promoted_at: Nullable<string>;
   width: number;
   user: User;
 }
@@ -63,13 +64,13 @@ export declare interface Basic {
 export declare interface Photos {
   results: Basic[];
   total: number;
-  totalPages: number;
+  total_pages: number;
 }
 
 export declare interface Data {
   type: "success";
   response: Photos;
-  originalResponse: Response;
+  original_response: Response;
   errors?: undefined;
   status: number;
 }
@@ -96,11 +97,11 @@ type OrderBy = "low" | "high";
 export declare interface Query {
   query: string;
   page?: number;
-  perPage?: number;
+  per_page?: number;
   orientation?: Orientation;
-  contentFilter?: ContentFilter;
+  content_filter?: ContentFilter;
   color?: Color;
-  SearchOrderBy?: OrderBy;
-  collectionIds?: [];
+  search_order_by?: OrderBy;
+  collection_ids?: [];
   Language?: string;
 }

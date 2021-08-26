@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Query } from "../helpers/types";
+import { Query } from "../types/types";
 import "../scss/main.scss";
 
 const Filter = (): JSX.Element => {

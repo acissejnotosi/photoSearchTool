@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createApi } from "unsplash-js";
-import { Data, Query } from "../../helpers/types";
+import { Data, Query } from "../../types/types";
 import { AppDispatch, RootState } from "../store";
 
 const API = createApi({
@@ -42,6 +42,7 @@ export const dataSlice = createSlice({
     builder.addCase(fetchData.fulfilled, (state, { payload }) => {
       // eslint-disable-next-line no-param-reassign
       state.resp = payload;
+      console.log(state.resp);
     });
     builder.addCase(fetchData.rejected, (state, action) => {
       if (action.payload) {

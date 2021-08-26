@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Query } from "../../helpers/types";
+import { Query } from "../../types/types";
 import { RootState } from "../store";
 
 const initialState: Query = {
   query: "",
   page: 1,
-  perPage: 20,
+  per_page: 30,
   orientation: undefined,
-  contentFilter: undefined,
+  content_filter: undefined,
   color: undefined,
-  SearchOrderBy: undefined,
-  collectionIds: undefined,
+  search_order_by: undefined,
+  collection_ids: undefined,
   Language: undefined,
 };
 
@@ -19,14 +19,12 @@ export const querySlice = createSlice({
   initialState,
   reducers: {
     updateQuery: (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
       // eslint-disable-next-line no-param-reassign
       state.page = initialState.page;
       // eslint-disable-next-line no-param-reassign
       state.query = action.payload;
     },
     updatePage: (state, action: PayloadAction<number>) => {
-      console.log(action.payload);
       // eslint-disable-next-line no-param-reassign
       state.page = action.payload;
     },

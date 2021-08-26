@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { createApi } from "unsplash-js";
-import businessPeopleImage from "../resources/images/business-people.jpg";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import "../scss/main.scss";
@@ -15,8 +13,6 @@ const SearchPage = (): JSX.Element => {
   const query = useAppSelector((state) => state.query);
 
   useEffect(() => {
-    console.log("entrou");
-    console.log(query);
     async function handleUpdateData() {
       await dispatch(fetchData(query));
     }

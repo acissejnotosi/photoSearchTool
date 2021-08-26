@@ -1,12 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import React from "react";
-import { Basic } from "../helpers/types";
 
-type PhotoProps = {
-  photo: Basic | undefined;
-};
-
-const Photo = ({ photo }: PhotoProps): JSX.Element => {
-  return <div> {photo?.id}</div>;
+const Photo = (): JSX.Element => {
+  return <div>photo</div>;
 };
 
 export default Photo;

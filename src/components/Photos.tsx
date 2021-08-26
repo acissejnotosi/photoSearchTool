@@ -1,17 +1,19 @@
 /* eslint-disable react/destructuring-assignment */
 import React from "react";
-import { Basic } from "../helpers/types";
+import { Basic } from "../types/types";
 import { useAppSelector } from "../redux/hooks";
-import Photo from "./Photo";
 
 const Photos = (): JSX.Element => {
   const data = useAppSelector((state) => state.data.resp);
+
   if (data.response !== undefined)
     return (
-      <div>
-        {data?.response.results.map((photo: Basic | undefined) => (
-          <Photo photo={photo} />
-        ))}{" "}
+      <div className="wrapper3">
+        {data?.response.results.map((photo: Basic) => {
+          return (
+            <img className="photos--image" src={photo.urls.small} alt="" />
+          );
+        })}{" "}
       </div>
     );
 
@@ -19,3 +21,17 @@ const Photos = (): JSX.Element => {
 };
 
 export default Photos;
+
+/*    if (photo.blur_hash) {
+            return (
+              <>
+                <BlurhashCanvas
+                  hash={photo.blur_hash}
+                  width={400}
+                  height={300}
+                />
+                <img src={photo.urls.small} alt="" />
+              </>
+            );
+          }
+          return <img src={photo.urls.regular} alt="" />; */
