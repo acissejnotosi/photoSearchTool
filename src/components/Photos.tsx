@@ -8,10 +8,24 @@ const Photos = (): JSX.Element => {
 
   if (data.response !== undefined)
     return (
-      <div className="wrapper3">
+      <div className="l-grid-photos">
         {data?.response.results.map((photo: Basic) => {
           return (
-            <img className="photos--image" src={photo.urls.small} alt="" />
+            <div className="photo">
+              <img className="photo__img" src={photo.urls.small} alt="" />
+              <button
+                type="button"
+                className="photo__button photo__button--download"
+              >
+                <i className="photo__download-i" />{" "}
+              </button>
+              <button
+                type="button"
+                className="photo__button photo__button--info"
+              >
+                <i className="photo__info-i" />{" "}
+              </button>
+            </div>
           );
         })}{" "}
       </div>

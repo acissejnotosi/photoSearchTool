@@ -1,0 +1,52 @@
+//styles for every component necessary for that project, including buttons, modals, etc.
+
+.photo__img {
+  width: 100% !important;
+  height: auto !important;
+  margin: 5px;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.photo {
+  position: relative;
+}
+
+.photo__button {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin-top: 10px;
+  padding: 1px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  &.photo__button--download {
+    top: 0px;
+    right: 0px;
+  }
+  &.photo__button--info {
+    top: 30px;
+    right: 0px;
+  }
+  &:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+}
+
+.photo__download-i {
+  background-image: url("../../resources/images/download.png");
+  background-size: cover;
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+
+.photo__info-i {
+  background-image: url("../../resources/images/info.png");
+  background-size: cover;
+  display: block;
+  width: 19px;
+  height: 19px;
+}

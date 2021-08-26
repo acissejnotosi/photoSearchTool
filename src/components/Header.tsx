@@ -7,8 +7,8 @@ const Header = (): JSX.Element => {
     <Router>
       <header>
         <Link to="/">
-          <div className="image-container">
-            <img className="image-container--logo" src={logo} alt="" />
+          <div className="logo-container">
+            <img className="logo" src={logo} alt="" />
           </div>
         </Link>
       </header>
