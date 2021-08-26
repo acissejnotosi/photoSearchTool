@@ -3,10 +3,11 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import "../scss/main.scss";
 import Footer from "./Footer";
-import Result from "./Result";
 import Pagination from "./Pagination";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchData } from "../redux/slices/data";
+import Photos from "./Photos";
+import Filter from "./Filter";
 
 const SearchPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -20,23 +21,23 @@ const SearchPage = (): JSX.Element => {
   }, [dispatch, query]);
 
   return (
-    <div className="wrapper">
-      <div className="box header">
+    <div className="l-grid">
+      <div className="l-grid--box l-grid__header">
         <Header />
       </div>
-      <div className="box image">
-        <div className="image-container" />
-      </div>
-      <div className="box search">
+      <div className="l-grid--box l-grid__search">
         <SearchBar />
       </div>
-      <div className="box section">
-        <Result />
+      <div className="l-grid--box l-grid__tool-bar">
+        <Filter />
       </div>
-      <div className="box pagination">
+      <div className="l-grid--box l-grid__result">
+        <Photos />
+      </div>
+      <div className="l-grid--box l-grid__pagination">
         <Pagination />
       </div>
-      <div className="box footer">
+      <div className="l-grid--box l-grid__footer">
         <Footer />
       </div>
     </div>

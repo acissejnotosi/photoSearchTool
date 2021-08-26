@@ -1,36 +1,35 @@
 // there are the styles for the header, footer, the grid system, etc
 
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Raleway&display=swap");
+
 body {
   background-color: #f2f2f2;
   font-family: "Raleway", sans-serif;
 }
-.box {
-  color: #0a2326;
+
+.l-grid--box {
   font-size: 150%;
   padding: 10px;
 }
-.header {
+
+.l-grid__header {
   grid-area: header;
   background-color: #475459;
 }
-.search {
+
+.l-grid__search {
   grid-area: search;
   background-color: #f2f2f2;
   color: #0a2326;
 }
-.section {
-  grid-area: section;
-  &.box {
-    padding-left: 0;
-  }
-}
-.sidebar {
-  grid-area: sidebar;
+
+.l-grid__tool-bar {
+  grid-area: toolbar;
   background-color: #f2f2f2;
 }
-.content {
-  grid-area: content;
+
+.l-content__result {
+  grid-area: result;
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
@@ -38,80 +37,65 @@ body {
     padding-left: 0;
   }
 }
-.pagination {
+
+.l-grid__pagination {
   grid-area: pagination;
 }
-.footer {
+
+.l-grid__footer {
   grid-area: footer;
   width: 100%;
   text-align: center;
   background-color: #475459;
 }
-.wrapper {
+
+.l-grid {
   display: grid;
   grid-gap: 1em;
   grid-template-areas:
     "header"
     "search"
-    "section"
+    "toolbar"
+    "result"
     "pagination"
     "footer";
 }
+
 @media only screen and (min-width: 500px) {
-  .wrapper {
+  .l-grid {
     grid-template-columns: 20% auto;
     grid-template-areas:
       "header header"
       "search search"
-      "section section"
+      "toolbar toolbar"
+      "result result"
       "pagination pagination"
       "footer footer";
   }
 }
+
 @media only screen and (min-width: 600px) {
-  .wrapper {
+  .l-grid {
     grid-gap: 20px;
     grid-template-columns: 600px auto 600px;
     grid-template-areas:
       "header  header  header"
       "search search  search"
-      "section section section"
+      "toolbar toolbar toolbar"
+      "result result result"
       "... pagination ..."
       "footer  footer  footer";
     max-width: 100%;
   }
 }
-.wrapper2 {
-  display: grid;
-  border-color: none;
-  grid-gap: 1em;
-  grid-template-areas:
-    "sidebar"
-    "content";
-}
-@media only screen and (min-width: 500px) {
-  .wrapper2 {
-    grid-template-columns: 20% auto;
-    grid-template-areas:
-      "sidebar sidebar"
-      "content content";
-  }
-}
-@media only screen and (min-width: 600px) {
-  .wrapper2 {
-    grid-gap: 20px;
-    grid-template-columns: 600px 1fr;
-    grid-template-areas:
-      "sidebar sidebar sidebar"
-      "content content content";
-    max-width: 100%;
-  }
-}
+
 .l-grid-photos {
   line-height: 10px;
-  -webkit-column-count: 5;
   -webkit-column-gap: 0px;
   -moz-column-gap: 0px;
+  -moz-column-count: 5;
+  -webkit-column-count: 5;
+  column-count: 5;
   column-gap: 10px;
 }
 
@@ -122,6 +106,7 @@ body {
     column-count: 4;
   }
 }
+
 @media (max-width: 1000px) {
   .l-grid-photos {
     -moz-column-count: 3;
@@ -129,6 +114,7 @@ body {
     column-count: 3;
   }
 }
+
 @media (max-width: 800px) {
   .l-grid-photos {
     -moz-column-count: 2;
@@ -136,6 +122,7 @@ body {
     column-count: 2;
   }
 }
+
 @media (max-width: 400px) {
   .l-grid-photos {
     -moz-column-count: 1;
