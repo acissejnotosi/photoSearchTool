@@ -9,7 +9,10 @@ export const store: any = configureStore({
     data,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: { extraArgument: fetchData } }),
+    getDefaultMiddleware({
+      thunk: { extraArgument: fetchData },
+      serializableCheck: false,
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

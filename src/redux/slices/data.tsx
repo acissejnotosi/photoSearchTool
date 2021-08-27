@@ -1,4 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createApi } from "unsplash-js";
 import { Data, Query } from "../../types/types";
 import { AppDispatch, RootState } from "../store";
@@ -28,7 +29,6 @@ export const fetchData: any = createAsyncThunk<
 >("data/fetchByQuery", async (query, thunkAPI) => {
   const response = await API.search.getPhotos(query);
   if (response.status === 400) {
-    // Return the known error for future handling
     return thunkAPI.rejectWithValue(response as unknown as MyKnownError);
   }
   return response as unknown as Data;
@@ -40,15 +40,12 @@ export const dataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, { payload }) => {
-      // eslint-disable-next-line no-param-reassign
       state.resp = payload;
     });
     builder.addCase(fetchData.rejected, (state, action) => {
       if (action.payload) {
-        // eslint-disable-next-line no-param-reassign
         state.error = action.payload.errorMessage;
       } else {
-        // eslint-disable-next-line no-param-reassign
         state.error = action.error.toString();
       }
     });
