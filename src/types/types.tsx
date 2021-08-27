@@ -75,7 +75,7 @@ export declare interface Data {
   status: number;
 }
 
-type Color =
+export declare type Color =
   | "black_and_white"
   | "black"
   | "white"
@@ -92,7 +92,7 @@ type ContentFilter = "low" | "high";
 
 type Orientation = "landscape" | "portrait" | "squarish";
 
-type OrderBy = "low" | "high";
+export declare type OrderBy = "relevant" | "latest";
 
 export declare interface Query {
   query: string;

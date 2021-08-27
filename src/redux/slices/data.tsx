@@ -4,7 +4,7 @@ import { Data, Query } from "../../types/types";
 import { AppDispatch, RootState } from "../store";
 
 const API = createApi({
-  accessKey: "ntQWhYoc7SD4SIE_wjgR-HivgCHodVy85UTVX_YZoB8",
+  accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY as string,
 });
 
 interface MyKnownError {
@@ -42,7 +42,6 @@ export const dataSlice = createSlice({
     builder.addCase(fetchData.fulfilled, (state, { payload }) => {
       // eslint-disable-next-line no-param-reassign
       state.resp = payload;
-      console.log(state.resp);
     });
     builder.addCase(fetchData.rejected, (state, action) => {
       if (action.payload) {

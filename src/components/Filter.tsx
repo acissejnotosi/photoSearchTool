@@ -1,58 +1,58 @@
 import React, { useState } from "react";
-import { Query } from "../types/types";
+import { useAppDispatch } from "../redux/hooks";
 import "../scss/main.scss";
 
 const Filter = (): JSX.Element => {
-  const [showSideContainer, setShowSideContainer] = useState<boolean>(false);
-  const handleOnClick = () => {
-    setShowSideContainer(true);
+  const [orientation, setOrientation] = useState("Orientation");
+  const [color, setColor] = useState("Color");
+  const [publishDate, setPublishDate] = useState("Publish Date");
+  const [searchBy, setSearchBy] = useState("Search By ...");
+  const dispatch = useAppDispatch();
+
+  const handleOnChangeOrientation = (event: any) => {
+    setOrientation(event.target.value);
   };
-  const handleCloseButton = () => {
-    setShowSideContainer(false);
+
+  const handleOnChangeColor = (event: any) => {
+    setColor(event.target.value);
   };
-  if (showSideContainer) {
-    return (
-      <div className="filter">
-        <div id="filter--side-container" style={{ width: "500px" }}>
-          <button
-            type="button"
-            className="close-btn"
-            onClick={handleCloseButton}
-          >
-            &times;
-          </button>
-          <h1>Color</h1>
-          <label className="container">
-            One
-            <input type="radio" checked name="radio" />
-            <span className="checkmark" />
-          </label>
-          <label className="container">
-            Two
-            <input type="radio" name="radio" />
-            <span className="checkmark" />
-          </label>
-          <label className="container">
-            Three
-            <input type="radio" name="radio" />
-            <span className="checkmark" />
-          </label>
-          <label className="container">
-            Four
-            <input type="radio" name="radio" />
-            <span className="checkmark" />
-          </label>
-          <div>Orientation</div>
-        </div>
-      </div>
-    );
-  }
+
+  const handleOnChangePublishDate = (event: any) => {
+    setPublishDate(event.target.value);
+  };
+
+  const HandleFilterButton = (event: any) => {
+    // dispatch
+  };
+
   return (
     <div className="filter">
-      <button className="filter--button" type="button" onClick={handleOnClick}>
-        Filters{" "}
-      </button>
-      <div id="filter--side-container" style={{ width: "0px" }} />
+      <form>
+        <select onChange={handleOnChangeOrientation}>
+          <option value="">None</option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="fiat">Fiat</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select onChange={handleOnChangeColor}>
+          <option value="">None</option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="fiat">Fiat</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select onChange={handleOnChangePublishDate}>
+          <option value="">None</option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="fiat">Fiat</option>
+          <option value="audi">Audi</option>
+        </select>
+        <button type="button" className="filter__button">
+          Filter
+        </button>
+      </form>
     </div>
   );
 };

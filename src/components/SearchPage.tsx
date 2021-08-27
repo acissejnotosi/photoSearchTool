@@ -31,7 +31,7 @@ const SearchPage = (): JSX.Element => {
       <div className="l-grid--box l-grid__tool-bar">
         <Filter />
       </div>
-      <div className="l-grid--box l-grid__result">
+      <div className="l-grid--box l-content__result">
         <Photos />
       </div>
       <div className="l-grid--box l-grid__pagination">

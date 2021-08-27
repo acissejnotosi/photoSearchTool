@@ -14,6 +14,7 @@ body {
 
 .l-grid__header {
   grid-area: header;
+  width: 100%;
   background-color: #475459;
 }
 
@@ -30,8 +31,8 @@ body {
 
 .l-content__result {
   grid-area: result;
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  justify-content: center;
   align-items: baseline;
   &.box {
     padding-left: 0;
@@ -40,6 +41,8 @@ body {
 
 .l-grid__pagination {
   grid-area: pagination;
+  display: grid;
+  justify-content: center;
 }
 
 .l-grid__footer {
@@ -77,12 +80,12 @@ body {
 @media only screen and (min-width: 600px) {
   .l-grid {
     grid-gap: 20px;
-    grid-template-columns: 600px auto 600px;
+    grid-template-columns: 100px auto 100px;
     grid-template-areas:
       "header  header  header"
-      "search search  search"
-      "toolbar toolbar toolbar"
-      "result result result"
+      "... search  ..."
+      "... toolbar ..."
+      "... result ..."
       "... pagination ..."
       "footer  footer  footer";
     max-width: 100%;

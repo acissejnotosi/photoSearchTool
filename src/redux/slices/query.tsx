@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Query } from "../../types/types";
+import { Color, OrderBy, Query } from "../../types/types";
 import { RootState } from "../store";
+
+type filterOptions = {
+  orientation: undefined;
+  color: Color | undefined;
+};
 
 const initialState: Query = {
   query: "",
@@ -27,6 +32,20 @@ export const querySlice = createSlice({
     updatePage: (state, action: PayloadAction<number>) => {
       // eslint-disable-next-line no-param-reassign
       state.page = action.payload;
+    },
+    updateFilterOptions: (state, action: PayloadAction<filterOptions>) => {
+      // eslint-disable-next-line no-param-reassign
+      state.page = initialState.page;
+      // eslint-disable-next-line no-param-reassign
+      state.orientation = action.payload.orientation;
+      // eslint-disable-next-line no-param-reassign
+      state.color = action.payload.color;
+    },
+    sortPhotos: (state, action: PayloadAction<OrderBy | undefined>) => {
+      // eslint-disable-next-line no-param-reassign
+      state.page = initialState.page;
+      // eslint-disable-next-line no-param-reassign
+      state.search_order_by = action.payload;
     },
   },
 });
