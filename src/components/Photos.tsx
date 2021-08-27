@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React from "react";
+import { userInfo } from "os";
 import { Basic } from "../types/types";
 import { useAppSelector } from "../redux/hooks";
 
@@ -25,6 +26,19 @@ const Photos = (): JSX.Element => {
               >
                 <i className="photo__info-i" />{" "}
               </button>
+              {photo.user.portfolio_url ? (
+                <a className="photo__user-link" href={photo.user.portfolio_url}>
+                  <span className="photo__user-name">
+                    Photo by {photo.user.first_name} {photo.user.last_name} on
+                    Unsplash{" "}
+                  </span>
+                </a>
+              ) : (
+                <span className="photo__user-name">
+                  Photo by {photo.user.first_name} {photo.user.last_name} on
+                  Unsplash{" "}
+                </span>
+              )}
             </div>
           );
         })}{" "}

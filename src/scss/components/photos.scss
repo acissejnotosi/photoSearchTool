@@ -50,3 +50,18 @@
   width: 19px;
   height: 19px;
 }
+
+.photo__user-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.photo__user-name {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 1rem;
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+}
