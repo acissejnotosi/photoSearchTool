@@ -1,12 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import PageNotFound from "./components/PageNotFound";
 import SearchPage from "./components/SearchPage";
 
 function App(): JSX.Element {
   return (
-    <Router>
-      <Route path="/" exact component={SearchPage} />
-    </Router>
+    <Switch>
+      <Route path="/">
+        <SearchPage />
+      </Route>
+      <Route path="*">
+        <PageNotFound />
+      </Route>
+    </Switch>
   );
 }
 
