@@ -66,15 +66,29 @@ const Photo = ({ id }: PhotoType): JSX.Element => {
             </span>
           </a>
         ) : (
-          <span
-            className="photo__user-name"
-            style={
-              hideOptions ? { visibility: "hidden" } : { visibility: "visible" }
-            }
-          >
-            Photo by {photo.user.first_name}
-            {photo.user.last_name} on Unsplash{" "}
-          </span>
+          <>
+            <span
+              className="photo__user-name"
+              style={
+                hideOptions
+                  ? { visibility: "hidden" }
+                  : { visibility: "visible" }
+              }
+            >
+              Photo by {photo.user.first_name}
+              {photo.user.last_name}
+            </span>
+            <span
+              className="photo__user-name"
+              style={
+                hideOptions
+                  ? { visibility: "hidden" }
+                  : { visibility: "visible" }
+              }
+            >
+              on Unsplash{" "}
+            </span>
+          </>
         )}
       </div>
     );
