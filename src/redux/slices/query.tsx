@@ -45,15 +45,10 @@ export const querySlice = createSlice({
       state.page = initialState.page;
       state.search_order_by = action.payload;
     },
-    updateQueryPageFilter: (state, action: PayloadAction<queryPageFilter>) => {
-      state.query = action.payload.queryName;
-      state.page = action.payload.pageNumber;
-    },
   },
 });
 
-export const { updateQuery, updatePage, updateQueryPageFilter } =
-  querySlice.actions;
+export const { updateQuery, updatePage } = querySlice.actions;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const selectQuery = (state: RootState) => state.query;
