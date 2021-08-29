@@ -45,8 +45,6 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
   };
 
   const handleOrientation = (event: any) => {
-    const { name, value } = event.target;
-    console.log(event.target);
     setOrientation(event.target.value);
     dispatch(updateOrientation(event.target.value));
     searchParams.set(ORIENTATION, event.target.value);
@@ -81,6 +79,7 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
     dispatch(sortPhotos(searchByParam as unknown as OrderBy));
     dispatch(updateOrientation(orientationParam as unknown as Orientation));
     updateSearchParams();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orientationParam, colorParam, searchByParam, dispatch]);
 
   if (query.query === "") {
@@ -89,31 +88,37 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
 
   return (
     <div className="filter">
-      <form>
-        <select onChange={handleOrientation} value={orientation}>
-          <option value={undefined}>All Orientations</option>
-          <option value="landscape">Landscape</option>
-          <option value="portrait">Portrait</option>
-          <option value="squarish">Squarish</option>
-        </select>
-        <select onChange={handleColor} value={color}>
-          <option value={undefined}>Colorful</option>
-          <option value="black_and_white">Black and White</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="yellow">Yellow</option>
-          <option value="orange">Orange</option>
-          <option value="purple">Purple</option>
-          <option value="magenta">Magenta</option>
-          <option value="green">Green</option>
-          <option value="teal">Teal</option>
-          <option value="blue">Blue</option>
-        </select>
-        <select onChange={handleSearchBy} value={searchBy}>
-          <option value="relevant">Relevant</option>
-          <option value="latest">Latest</option>
-        </select>
-      </form>
+      <select
+        className="filter__select"
+        onChange={handleOrientation}
+        value={orientation}
+      >
+        <option value={undefined}>All Orientations</option>
+        <option value="landscape">Landscape</option>
+        <option value="portrait">Portrait</option>
+        <option value="squarish">Squarish</option>
+      </select>
+      <select className="filter__select" onChange={handleColor} value={color}>
+        <option value={undefined}>Colorful</option>
+        <option value="black_and_white">Black and White</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="yellow">Yellow</option>
+        <option value="orange">Orange</option>
+        <option value="purple">Purple</option>
+        <option value="magenta">Magenta</option>
+        <option value="green">Green</option>
+        <option value="teal">Teal</option>
+        <option value="blue">Blue</option>
+      </select>
+      <select
+        className="filter__select"
+        onChange={handleSearchBy}
+        value={searchBy}
+      >
+        <option value="relevant">Relevant</option>
+        <option value="latest">Latest</option>
+      </select>
     </div>
   );
 });
