@@ -31,10 +31,14 @@ const SearchBar = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <div className="search">
       <form onSubmit={handleSubmitButton}>
+        <button className="search__button" type="submit" value="submit">
+          <i className="icon--search" />
+          search
+        </button>
         <input
-          style={{ width: "300px" }}
+          className="search__input"
           type="text"
           name="name"
           placeholder="Enter your search term here"
@@ -42,10 +46,6 @@ const SearchBar = (): JSX.Element => {
           required
           onChange={handleChange}
         />
-        <button type="submit" value="submit">
-          <i className="icon--search" />
-          search
-        </button>
       </form>
     </div>
   );

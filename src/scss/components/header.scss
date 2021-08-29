@@ -1,11 +1,11 @@
 //styles for every component necessary for that project, including buttons, modals, etc.
 
-.logo-container {
+.header__logo {
   display: flex;
   justify-content: flex-start;
 }
 
-.logo {
+.header__image {
   width: 200px; /* width of container */
   height: 70px; /* height of container */
   object-fit: cover;
