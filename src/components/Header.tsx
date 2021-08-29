@@ -5,10 +5,10 @@ import logo from "../resources/images/logo.png";
 const Header = (): JSX.Element => {
   return (
     <Router>
-      <header>
+      <header className="header">
         <Link to="/">
-          <div className="logo-container">
-            <img className="logo" src={logo} alt="" />
+          <div className="header__logo">
+            <img className="header__image" src={logo} alt="" />
           </div>
         </Link>
       </header>
