@@ -2,12 +2,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Color, OrderBy, Orientation, Query } from "../../types/types";
 import { RootState } from "../store";
-import { fetchData } from "./data";
-
-type filterOptions = {
-  orientation: undefined;
-  color: Color | undefined;
-};
 
 const initialState: Query = {
   query: "",
@@ -26,7 +20,6 @@ export const querySlice = createSlice({
   initialState,
   reducers: {
     updateQuery: (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
       state.page = initialState.page;
       state.query = action.payload;
     },
