@@ -40,20 +40,15 @@ const Photo = ({ id }: PhotoType): JSX.Element => {
             hideOptions ? { filter: "none" } : { filter: "brightness(50%)" }
           }
         />
-        <button
-          type="button"
+        <a
           className="photo__button photo__button--download"
           hidden={hideOptions}
+          href={`${photo.links.download}?force=true`}
+          target=""
+          rel="noreferrer"
         >
           <i className="photo__download-i" />{" "}
-        </button>
-        <button
-          type="button"
-          className="photo photo__button photo__button--info"
-          hidden={hideOptions}
-        >
-          <i className="photo__info-i" />{" "}
-        </button>
+        </a>
         {photo.user.portfolio_url ? (
           <a
             className="photo__user-link"
