@@ -27,11 +27,9 @@ const Photos = (): JSX.Element => {
   }, [term, dispatch]);
 
   useEffect(() => {
-    console.log(query);
     async function handleUpdateData() {
       try {
-        const response = await dispatch(fetchData(query));
-        console.log(response);
+        await dispatch(fetchData(query));
       } catch (error) {
         console.log(error);
       }
