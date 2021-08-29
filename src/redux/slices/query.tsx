@@ -1,26 +1,22 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Color, OrderBy, Query } from "../../types/types";
+import { Color, OrderBy, Orientation, Query } from "../../types/types";
 import { RootState } from "../store";
+import { fetchData } from "./data";
 
 type filterOptions = {
   orientation: undefined;
   color: Color | undefined;
 };
 
-type queryPageFilter = {
-  queryName: string;
-  pageNumber: number;
-};
-
 const initialState: Query = {
   query: "",
   page: 1,
-  per_page: 30,
+  per_page: 50,
   orientation: undefined,
   content_filter: undefined,
   color: undefined,
-  search_order_by: undefined,
+  order_by: undefined,
   collection_ids: undefined,
   Language: undefined,
 };
@@ -30,25 +26,38 @@ export const querySlice = createSlice({
   initialState,
   reducers: {
     updateQuery: (state, action: PayloadAction<string>) => {
+      console.log(action.payload);
       state.page = initialState.page;
       state.query = action.payload;
     },
     updatePage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
-    updateFilterOptions: (state, action: PayloadAction<filterOptions>) => {
+    updateOrientation: (
+      state,
+      action: PayloadAction<Orientation | undefined>
+    ) => {
       state.page = initialState.page;
-      state.orientation = action.payload.orientation;
-      state.color = action.payload.color;
+      state.orientation = action.payload;
+    },
+    updateColor: (state, action: PayloadAction<Color | undefined>) => {
+      state.page = initialState.page;
+      state.color = action.payload;
     },
     sortPhotos: (state, action: PayloadAction<OrderBy | undefined>) => {
       state.page = initialState.page;
-      state.search_order_by = action.payload;
+      state.order_by = action.payload;
     },
   },
 });
 
-export const { updateQuery, updatePage } = querySlice.actions;
+export const {
+  updateQuery,
+  updatePage,
+  updateColor,
+  updateOrientation,
+  sortPhotos,
+} = querySlice.actions;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const selectQuery = (state: RootState) => state.query;

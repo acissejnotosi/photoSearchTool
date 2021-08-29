@@ -1,41 +1,56 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import {
+  RouteComponentProps,
+  withRouter,
+  useParams,
+  useLocation,
+} from "react-router-dom";
 import { Basic } from "../types/types";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import Photo from "./Photo";
 import { updateQuery } from "../redux/slices/query";
 import { fetchData } from "../redux/slices/data";
 
-const Photos = withRouter(
-  (props: RouteComponentProps<{ queryName: string }>): JSX.Element => {
-    const data = useAppSelector((state) => state.data.resp);
-    const query = useAppSelector((state) => state.query);
-    const dispatch = useAppDispatch();
-    const { queryName } = props.match.params;
+const TERM = "term";
 
-    useEffect(() => {
-      async function handleUpdateData() {
-        await dispatch(fetchData(query));
+const Photos = (): JSX.Element => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const term = searchParams.get(TERM);
+  const dispatch = useAppDispatch();
+  const data = useAppSelector((state) => state.data.resp);
+  const query = useAppSelector((state) => state.query);
+
+  useEffect(() => {
+    if (term) dispatch(updateQuery(term));
+  }, [term, dispatch]);
+
+  useEffect(() => {
+    console.log(query);
+    async function handleUpdateData() {
+      try {
+        const response = await dispatch(fetchData(query));
+        console.log(response);
+      } catch (error) {
+        console.log(error);
       }
-      handleUpdateData();
-    }, [dispatch, query]);
+    }
+    handleUpdateData();
+  }, [dispatch, query]);
 
-    useEffect(() => {
-      if (queryName) dispatch(updateQuery(queryName));
-    }, [dispatch, queryName]);
-
-    if (data.response !== undefined)
-      return (
+  if (data.response !== undefined)
+    return (
+      <div className="l-grid--box l-content__result">
         <div className="l-grid-photos">
           {data?.response.results.map((photo: Basic) => {
             return <Photo id={photo.id} />;
           })}{" "}
         </div>
-      );
+      </div>
+    );
 
-    return <div>Ops! You have not searched for photos yet.</div>;
-  }
-);
+  return <div>Ops! You have not searched for photos yet.</div>;
+};
 
 export default Photos;

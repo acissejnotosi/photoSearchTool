@@ -90,7 +90,7 @@ export declare type Color =
 
 type ContentFilter = "low" | "high";
 
-type Orientation = "landscape" | "portrait" | "squarish";
+export type Orientation = "landscape" | "portrait" | "squarish";
 
 export declare type OrderBy = "relevant" | "latest";
 
@@ -101,7 +101,7 @@ export declare interface Query {
   orientation?: Orientation;
   content_filter?: ContentFilter;
   color?: Color;
-  search_order_by?: OrderBy;
+  order_by?: OrderBy;
   collection_ids?: [];
   Language?: string;
 }

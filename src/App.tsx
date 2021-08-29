@@ -1,6 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import PageNotFound from "./components/PageNotFound";
+import { Switch, Route, Redirect } from "react-router-dom";
 import SearchPage from "./components/SearchPage";
 
 function App(): JSX.Element {
@@ -9,9 +8,7 @@ function App(): JSX.Element {
       <Route path="/">
         <SearchPage />
       </Route>
-      <Route path="*">
-        <PageNotFound />
-      </Route>
+      <Route component={() => <Redirect to="/" />} />
     </Switch>
   );
 }
