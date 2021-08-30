@@ -48,7 +48,7 @@ const Photos = (): JSX.Element => {
       </div>
     );
 
-  return <div>Ops! You have not searched for photos yet.</div>;
+  return <div>Ops! Something went wrong</div>;
 };
 
 export default Photos;
