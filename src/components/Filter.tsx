@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { RouteComponentProps, useLocation, withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { fetchData } from "../redux/slices/data";
 import {
   sortPhotos,
   updateColor,
@@ -73,13 +72,17 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
     updateSearchParams();
   };
 
-  // watch for query changes
+  /*   // watch for query changes
   useEffect(() => {
     async function handleUpdateData() {
-      await dispatch(fetchData(query));
+      try {
+        await dispatch(fetchData(query));
+      } catch {
+        <Redirect to="/" />;
+      }
     }
     handleUpdateData();
-  }, [dispatch, query]);
+  }, [dispatch, query]); */
 
   // Every time that params change should change path
   useEffect(() => {
@@ -132,9 +135,9 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
       </div>
       <div className="filter__term">
         {query.query.length > 20 ? (
-          <>Photos about {query.query.slice(0, 20)}...</>
+          <> Results for &quot;{query.query.slice(0, 20)}...&quot; </>
         ) : (
-          <>Photos about {query.query}</>
+          <> Results for&quot;{query.query}&quot; </>
         )}
       </div>
     </div>

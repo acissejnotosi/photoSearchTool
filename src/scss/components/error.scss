@@ -1,0 +1,14 @@
+.error {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  .error__message {
+  }
+
+  img {
+    width: 30vw;
+    height: fit-content;
+  }
+}

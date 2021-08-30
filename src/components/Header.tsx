@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../resources/images/logo.png";
 import SearchBar from "./SearchBar";
 

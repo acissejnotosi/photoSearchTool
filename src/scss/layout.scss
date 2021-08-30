@@ -6,6 +6,7 @@ body {
   background-color: #f2f2f2;
   font-family: "Raleway", sans-serif;
   width: 100%;
+  overflow-x: hidden;
   font-size: 100%;
 }
 
@@ -36,6 +37,7 @@ body {
 .l-grid__tool-bar {
   width: 100%;
   grid-area: toolbar;
+  height: 5vh;
 }
 
 .l-content__result {

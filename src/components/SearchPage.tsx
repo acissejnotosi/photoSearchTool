@@ -1,26 +1,44 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks";
+import React, { useEffect } from "react";
+import { Route, Switch, useHistory } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import Header from "./Header";
-import SearchBar from "./SearchBar";
 import "../scss/main.scss";
 import Footer from "./Footer";
 import Pagination from "./Pagination";
 import Photos from "./Photos";
 import Filter from "./Filter";
-
-import Ready from "./ready";
+import Error from "./Error";
+import { fetchData } from "../redux/slices/data";
 
 const SearchPage = (): JSX.Element => {
+  const history = useHistory();
+  const dispatch = useAppDispatch();
   const query = useAppSelector((state) => state.query);
+  const errors = useAppSelector((state) => state.data.errors);
+
+  useEffect(() => {
+    async function handleUpdateData() {
+      const response = await dispatch(fetchData(query));
+      if (fetchData.rejected.match(response)) {
+        history.replace({
+          pathname: `/`,
+        });
+      }
+    }
+    handleUpdateData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, query]);
 
   return (
     <div className="l-grid">
       <div className="l-grid--box l-grid__header">
         <Header />
       </div>
-      {query.query === "" ? (
-        <Ready />
+      {errors.length > 0 ? <Error /> : <></>}
+      {query.query === "" && errors === [] ? (
+        <div className="ready">
+          Search for any term using the search bar above
+        </div>
       ) : (
         <Switch>
           <Route path="/search/" exact>

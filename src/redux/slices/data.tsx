@@ -14,7 +14,7 @@ interface MyKnownError {
 
 const resp: Data = {} as Data;
 
-const initialState = { resp, error: "" };
+const initialState = { resp, errors: [] };
 
 export const fetchData: any = createAsyncThunk<
   Data,
@@ -28,7 +28,7 @@ export const fetchData: any = createAsyncThunk<
   }
 >("data/fetchByQuery", async (query, thunkAPI) => {
   const response = await API.search.getPhotos(query);
-  if (response.status === 400) {
+  if (response.status === 400 || response.status === 401) {
     return thunkAPI.rejectWithValue(response as unknown as MyKnownError);
   }
   return response as unknown as Data;
@@ -44,9 +44,9 @@ export const dataSlice = createSlice({
     });
     builder.addCase(fetchData.rejected, (state, action) => {
       if (action.payload) {
-        state.error = action.payload.errorMessage;
+        state.errors = action.payload.errors;
       } else {
-        state.error = action.error.toString();
+        state.errors = action.error.toString();
       }
     });
   },

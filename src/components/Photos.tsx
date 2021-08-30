@@ -1,16 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
-import {
-  RouteComponentProps,
-  withRouter,
-  useParams,
-  useLocation,
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Basic } from "../types/types";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import Photo from "./Photo";
 import { updateQuery } from "../redux/slices/query";
-import { fetchData } from "../redux/slices/data";
 
 const TERM = "term";
 
@@ -20,22 +14,10 @@ const Photos = (): JSX.Element => {
   const term = searchParams.get(TERM);
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.data.resp);
-  const query = useAppSelector((state) => state.query);
 
   useEffect(() => {
     if (term) dispatch(updateQuery(term));
   }, [term, dispatch]);
-
-  useEffect(() => {
-    async function handleUpdateData() {
-      try {
-        await dispatch(fetchData(query));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    handleUpdateData();
-  }, [dispatch, query]);
 
   if (data.response !== undefined)
     return (
@@ -48,7 +30,7 @@ const Photos = (): JSX.Element => {
       </div>
     );
 
-  return <div>Ops! Something went wrong</div>;
+  return <></>;
 };
 
 export default Photos;

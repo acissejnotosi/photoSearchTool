@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { usePagination } from "../hooks/usePagination";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { updatePage } from "../redux/slices/query";
-import { fetchData } from "../redux/slices/data";
 import { Data, Query } from "../types/types";
 
 const PAGE = "page";
@@ -37,7 +36,7 @@ const Pagination = (): JSX.Element => {
     siblingCount,
   });
 
-  useEffect(() => {
+  /*   useEffect(() => {
     async function handleUpdateData() {
       try {
         const response = await dispatch(fetchData(query));
@@ -47,12 +46,10 @@ const Pagination = (): JSX.Element => {
       }
     }
     handleUpdateData();
-  }, [dispatch, query]);
+  }, [dispatch, query]); */
 
   useEffect(() => {
     const updateSearchParams = () => {
-      console.log(location.pathname);
-      console.log(searchParams.toString());
       history.push({
         pathname: location.pathname,
         search: searchParams.toString(),
@@ -71,7 +68,6 @@ const Pagination = (): JSX.Element => {
 
   const onPageChange = (newPage: string | number) => {
     window.scrollTo(0, 0);
-    console.log("entrou no change");
     setPageNumber(Number(newPage));
   };
 
