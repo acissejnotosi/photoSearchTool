@@ -32,7 +32,7 @@ const SearchBar = (): JSX.Element => {
 
   return (
     <div className="search">
-      <form onSubmit={handleSubmitButton}>
+      <form className="search__form" onSubmit={handleSubmitButton}>
         <button className="search__button" type="submit" value="submit">
           <i className="icon--search" />
           search

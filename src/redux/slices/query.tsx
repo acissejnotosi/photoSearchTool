@@ -3,6 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Color, OrderBy, Orientation, Query } from "../../types/types";
 import { RootState } from "../store";
 
+const ALL_ORIENTATION = "All Orientations";
+const COLORFUL = "Colorful";
+
 const initialState: Query = {
   query: "",
   page: 1,
@@ -28,14 +31,22 @@ export const querySlice = createSlice({
     },
     updateOrientation: (
       state,
-      action: PayloadAction<Orientation | undefined>
+      action: PayloadAction<Orientation | undefined | string>
     ) => {
       state.page = initialState.page;
-      state.orientation = action.payload;
+      if (action.payload?.toString() === ALL_ORIENTATION) {
+        state.orientation = undefined;
+      } else {
+        state.orientation = action.payload as Orientation | undefined;
+      }
     },
-    updateColor: (state, action: PayloadAction<Color | undefined>) => {
+    updateColor: (state, action: PayloadAction<Color | undefined | string>) => {
       state.page = initialState.page;
-      state.color = action.payload;
+      if (action.payload?.toString() === COLORFUL) {
+        state.color = undefined;
+      } else {
+        state.color = action.payload as Color | undefined;
+      }
     },
     sortPhotos: (state, action: PayloadAction<OrderBy | undefined>) => {
       state.page = initialState.page;

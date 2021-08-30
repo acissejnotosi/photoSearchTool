@@ -1,5 +1,10 @@
 //styles for every component necessary for that project, including buttons, modals, etc.
 
+.header {
+  width: 100%;
+  background-color: #475459;
+}
+
 .header__logo {
   display: flex;
   justify-content: flex-start;

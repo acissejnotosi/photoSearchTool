@@ -13,11 +13,7 @@ const SearchPage = (): JSX.Element => {
     <div className="l-grid">
       <div className="l-grid--box l-grid__header">
         <Header />
-        <SearchBar />
       </div>
-      {/*  <div className="l-grid--box l-grid__search">
-        <SearchBar />
-      </div> */}
       <Switch>
         <Route path="/search/" exact>
           <Photos />

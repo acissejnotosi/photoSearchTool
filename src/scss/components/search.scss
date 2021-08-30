@@ -1,9 +1,14 @@
 .search {
-  width: 50%;
+}
+
+.search__form {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .search__input {
-  width: 90%;
+  width: 50vw;
+  min-width: 100px;
 }
 
 .search__button {

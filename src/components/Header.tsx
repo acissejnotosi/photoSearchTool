@@ -1,18 +1,20 @@
 import React from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import logo from "../resources/images/logo.png";
+import SearchBar from "./SearchBar";
 
 const Header = (): JSX.Element => {
   return (
-    <Router>
-      <header className="header">
+    <header className="header wrapper">
+      <div className="l-grid__header__content">
         <Link to="/">
           <div className="header__logo">
             <img className="header__image" src={logo} alt="" />
           </div>
         </Link>
-      </header>
-    </Router>
+        <SearchBar />
+      </div>
+    </header>
   );
 };
 
