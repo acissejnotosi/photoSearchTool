@@ -72,15 +72,6 @@ const Photo = ({ id }: PhotoType): JSX.Element => {
             >
               Photo by {photo.user.first_name}
               {photo.user.last_name}
-            </span>
-            <span
-              className="photo__user-name"
-              style={
-                hideOptions
-                  ? { visibility: "hidden" }
-                  : { visibility: "visible" }
-              }
-            >
               on Unsplash{" "}
             </span>
           </>
