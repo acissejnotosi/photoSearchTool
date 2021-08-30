@@ -26,8 +26,7 @@ const SearchPage = (): JSX.Element => {
       }
     }
     handleUpdateData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, query]);
+  }, [dispatch, history, query]);
 
   return (
     <div className="l-grid">

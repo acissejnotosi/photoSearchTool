@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Basic } from "../types/types";
+import { Basic } from "../shared/types";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import Photo from "./Photo";
 import { updateQuery } from "../redux/slices/query";

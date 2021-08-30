@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
   sortPhotos,
@@ -7,15 +7,20 @@ import {
   updateOrientation,
 } from "../redux/slices/query";
 import "../scss/main.scss";
-import { Color, Orientation, OrderBy, Query } from "../types/types";
+import { Color, Orientation, OrderBy, Query } from "../shared/types";
 
 const ORIENTATION = "orientation";
 const COLOR = "color";
 const SEARCHBY = "searchBy";
 
-const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
+const Filter = (): JSX.Element => {
   // Params from url path
-  const searchParams = new URLSearchParams(props.location.search);
+  const location = useLocation();
+  const history = useHistory();
+  const searchParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search]
+  );
   const orientationParam = searchParams.get(ORIENTATION);
   const colorParam = searchParams.get(COLOR);
   const searchByParam = searchParams.get(SEARCHBY);
@@ -36,15 +41,15 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
   );
 
   // Update search params
-  const updateSearchParams = () => {
-    props.history.push({
-      pathname: props.location.pathname,
+  const updateSearchParams = useCallback(() => {
+    history.push({
+      pathname: location.pathname,
       search: searchParams.toString(),
     });
-  };
+  }, [history, location.pathname, searchParams]);
 
-  const handleOrientation = (event: any) => {
-    setOrientation(event.target.value);
+  const handleOrientation = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setOrientation(event.target.value as unknown as Orientation);
     if (event.target.value === "All Orientations") {
       dispatch(updateOrientation(undefined));
     } else {
@@ -54,8 +59,8 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
     updateSearchParams();
   };
 
-  const handleColor = (event: any) => {
-    setColor(event.target.value);
+  const handleColor = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setColor(event.target.value as unknown as Color);
     if (event.target.value === "Colorful") {
       dispatch(updateColor(undefined));
     } else {
@@ -65,37 +70,26 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
     updateSearchParams();
   };
 
-  const handleSearchBy = (event: any) => {
-    setSearchBy(event.target.value);
-    dispatch(sortPhotos(event.target.value));
+  const handleSearchBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSearchBy(event.target.value as unknown as OrderBy);
+    dispatch(sortPhotos(event.target.value as unknown as OrderBy));
     searchParams.set(SEARCHBY, event.target.value);
     updateSearchParams();
   };
 
-  /*   // watch for query changes
-  useEffect(() => {
-    async function handleUpdateData() {
-      try {
-        await dispatch(fetchData(query));
-      } catch {
-        <Redirect to="/" />;
-      }
-    }
-    handleUpdateData();
-  }, [dispatch, query]); */
-
-  // Every time that params change should change path
+  // Every time that params are changed, the path should also changed
   useEffect(() => {
     dispatch(updateColor(colorParam as unknown as Color));
     dispatch(sortPhotos(searchByParam as unknown as OrderBy));
     dispatch(updateOrientation(orientationParam as unknown as Orientation));
     updateSearchParams();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orientationParam, colorParam, searchByParam, dispatch]);
-
-  if (query.query === "") {
-    return <></>;
-  }
+  }, [
+    orientationParam,
+    colorParam,
+    searchByParam,
+    dispatch,
+    updateSearchParams,
+  ]);
 
   return (
     <div className="filter">
@@ -103,16 +97,20 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
         {" "}
         <select
           className="filter__select"
-          onChange={handleOrientation}
+          onChange={(event) => handleOrientation(event)}
           value={orientation}
         >
-          <option value={undefined}>All Orientations</option>
+          <option>All Orientations</option>
           <option value="landscape">Landscape</option>
           <option value="portrait">Portrait</option>
           <option value="squarish">Squarish</option>
         </select>
-        <select className="filter__select" onChange={handleColor} value={color}>
-          <option value={undefined}>Colorful</option>
+        <select
+          className="filter__select"
+          onChange={(event) => handleColor(event)}
+          value={color}
+        >
+          <option>Colorful</option>
           <option value="black_and_white">Black and White</option>
           <option value="black">Black</option>
           <option value="white">White</option>
@@ -126,7 +124,7 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
         </select>
         <select
           className="filter__select"
-          onChange={handleSearchBy}
+          onChange={(event) => handleSearchBy(event)}
           value={searchBy}
         >
           <option value="relevant">Relevant</option>
@@ -142,6 +140,6 @@ const Filter = withRouter((props: RouteComponentProps): JSX.Element => {
       </div>
     </div>
   );
-});
+};
 
 export default Filter;

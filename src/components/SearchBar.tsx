@@ -19,20 +19,23 @@ const SearchBar = (): JSX.Element => {
     });
   };
 
-  const handleSubmitButton = (event: any) => {
+  const handleSubmitButton = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(updateQuery(input));
     searchParams.set(TERM, input);
     updateSearchParams();
   };
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
 
   return (
     <div className="search">
-      <form className="search__form" onSubmit={handleSubmitButton}>
+      <form
+        className="search__form"
+        onSubmit={(event) => handleSubmitButton(event)}
+      >
         <button className="search__button" type="submit" value="submit">
           <i className="icon--search" />
           Search
@@ -44,7 +47,7 @@ const SearchBar = (): JSX.Element => {
           placeholder="Enter your search term here"
           autoComplete="on"
           required
-          onChange={handleChange}
+          onChange={(event) => handleChange(event)}
         />
       </form>
     </div>

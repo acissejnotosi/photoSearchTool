@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppSelector } from "../redux/hooks";
+// eslint-disable-next-line max-len
 import paneImage from "../resources/images/pane-not-found-without-background.jpg";
 
 const Error = (): JSX.Element => {

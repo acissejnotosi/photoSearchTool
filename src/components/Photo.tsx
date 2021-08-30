@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import React, { useState } from "react";
 import { useAppSelector } from "../redux/hooks";
-import { Basic, Data } from "../types/types";
+import { Basic, Data } from "../shared/types";
 
 type PhotoType = {
   id: string;
@@ -19,16 +18,11 @@ const Photo = ({ id }: PhotoType): JSX.Element => {
   const handleMouseLeave = () => {
     setHideOptions(true);
   };
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const handleOnFocus = () => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const handleOnBlur = () => {};
   if (photo) {
     return (
+      // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
       <div
         className="photo"
-        onBlur={handleOnBlur}
-        onFocus={handleOnFocus}
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >

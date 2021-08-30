@@ -3,7 +3,7 @@ import query from "./slices/query";
 import data, { fetchData } from "./slices/data";
 // ...
 
-export const store: any = configureStore({
+export const store = configureStore({
   reducer: {
     query,
     data,
@@ -15,8 +15,6 @@ export const store: any = configureStore({
     }),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // eslint-disable-next-line max-len
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

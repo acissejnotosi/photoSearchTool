@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createApi } from "unsplash-js";
-import { Data, Query } from "../../types/types";
+import { Data, Query } from "../../shared/types";
 import { AppDispatch, RootState } from "../store";
 
 const API = createApi({
@@ -14,8 +14,14 @@ interface MyKnownError {
 
 const resp: Data = {} as Data;
 
-const initialState = { resp, errors: [] };
+interface StateType {
+  resp: Data;
+  errors: [];
+}
 
+const initialState: StateType = { resp, errors: [] };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const fetchData: any = createAsyncThunk<
   Data,
   Query,
@@ -28,7 +34,7 @@ export const fetchData: any = createAsyncThunk<
   }
 >("data/fetchByQuery", async (query, thunkAPI) => {
   const response = await API.search.getPhotos(query);
-  if (response.status === 400 || response.status === 401) {
+  if (response.status === 400) {
     return thunkAPI.rejectWithValue(response as unknown as MyKnownError);
   }
   return response as unknown as Data;
@@ -52,9 +58,6 @@ export const dataSlice = createSlice({
   },
 });
 
-// export const {} = dataSlice.actions;
-// Other code such as selectors can use the imported `RootState` type
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const selectCount = (state: RootState) => state.data;
+export const selectData = (state: RootState): StateType => state.data;
 
 export default dataSlice.reducer;

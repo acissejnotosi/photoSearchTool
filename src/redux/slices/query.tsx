@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Color, OrderBy, Orientation, Query } from "../../types/types";
+import { Color, OrderBy, Orientation, Query } from "../../shared/types";
 import { RootState } from "../store";
 
 const ALL_ORIENTATION = "All Orientations";
@@ -63,7 +63,6 @@ export const {
   sortPhotos,
 } = querySlice.actions;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const selectQuery = (state: RootState) => state.query;
+export const selectQuery = (state: RootState): Query => state.query;
 
 export default querySlice.reducer;

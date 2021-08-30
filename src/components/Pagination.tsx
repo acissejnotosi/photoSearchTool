@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { usePagination } from "../hooks/usePagination";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { updatePage } from "../redux/slices/query";
-import { Data, Query } from "../types/types";
+import { Data, Query } from "../shared/types";
 
 const PAGE = "page";
 
@@ -11,7 +11,10 @@ const Pagination = (): JSX.Element => {
   // From React Router
   const history = useHistory();
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const searchParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search]
+  );
 
   // From Redux Store
   const dispatch = useAppDispatch();
@@ -29,24 +32,12 @@ const Pagination = (): JSX.Element => {
     Number(searchParams?.get(PAGE)) || currentPage
   );
 
-  // Hook for pagination range calcualtion
+  // Hook for pagination range calculation
   const paginationRange = usePagination({
     totalPages,
     currentPage,
     siblingCount,
   });
-
-  /*   useEffect(() => {
-    async function handleUpdateData() {
-      try {
-        const response = await dispatch(fetchData(query));
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    handleUpdateData();
-  }, [dispatch, query]); */
 
   useEffect(() => {
     const updateSearchParams = () => {
@@ -60,7 +51,7 @@ const Pagination = (): JSX.Element => {
       searchParams.set(PAGE, pageNumber.toString());
       updateSearchParams();
     }
-  }, [pageNumber]);
+  }, [dispatch, history, location.pathname, pageNumber, searchParams]);
 
   if (currentPage === 0 || paginationRange.length < 2) {
     return <></>;
