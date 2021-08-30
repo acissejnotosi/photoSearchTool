@@ -16,6 +16,11 @@
     line-height: 1.43;
     font-size: 13px;
     min-width: 32px;
+    border: none;
+
+    &.pagination__item--active {
+      background-color: #83a64e;
+    }
 
     &.pagination__item--dots:hover {
       background-color: transparent;
@@ -62,7 +67,7 @@
 
       &:hover {
         background-color: transparent;
-        cursor: default;
+        cursor: none;
       }
     }
   }

@@ -70,6 +70,8 @@ const Pagination = (): JSX.Element => {
   }
 
   const onPageChange = (newPage: string | number) => {
+    window.scrollTo(0, 0);
+    console.log("entrou no change");
     setPageNumber(Number(newPage));
   };
 
@@ -85,7 +87,15 @@ const Pagination = (): JSX.Element => {
   return (
     <div className="pagination">
       {/* Left navigation arrow */}
-      <button className="pagination__item" onClick={onPrevious} type="button">
+      <button
+        className={
+          currentPage === 1
+            ? "pagination__item  pagination__item--disabled"
+            : "pagination__item"
+        }
+        onClick={onPrevious}
+        type="button"
+      >
         <div className="pagination__arrow pagination__arrow--left" />
       </button>
       {paginationRange.map((number) => {
@@ -99,17 +109,17 @@ const Pagination = (): JSX.Element => {
         }
         // Render our Page Pills
         return (
-          <button
-            type="button"
+          <a
             className={
               number === currentPage
                 ? "pagination__item pagination__item--active"
                 : "pagination__item"
             }
             onClick={() => onPageChange(number)}
+            href="#top"
           >
             {number}
-          </button>
+          </a>
         );
       })}
 
