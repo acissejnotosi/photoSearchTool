@@ -1,6 +1,8 @@
+@import "../base.scss";
+
 .header {
   width: 100%;
-  background-color: #475459;
+  background-color: $Color-Theme-9-2-hex;
 
   .header__logo {
     display: flex;

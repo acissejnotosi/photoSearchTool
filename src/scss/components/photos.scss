@@ -1,3 +1,5 @@
+@import "../base.scss";
+
 .photo {
   position: relative;
   .photo__figure {
@@ -20,7 +22,7 @@
     margin-top: 20px;
     margin-right: 25px;
     padding: 1%;
-    background-color: #f2f2f2;
+    background-color: $Color-Theme-9-1-hex;
     opacity: 0.5;
     filter: alpha(opacity=50);
     &.photo__button--download {

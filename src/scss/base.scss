@@ -1,6 +1,19 @@
 // contains variables, resets, mixins, and other similar styles
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Pacifico&display=swap");
+
 $Color-Theme-9-1-hex: #f2f2f2;
 $Color-Theme-9-2-hex: #475459;
 $Color-Theme-9-3-hex: #0a2326;
 $Color-Theme-9-4-hex: #83a64e;
 $Color-Theme-9-5-hex: #e0b692;
+
+body {
+  font-family: "Lato" -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  h1 {
+    font-family: "Pacifico";
+  }
+  h2 {
+    font-family: "Pacifico";
+  }
+}

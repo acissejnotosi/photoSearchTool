@@ -1,3 +1,5 @@
+@import "../base.scss";
+
 .search {
   .search__form {
     display: flex;
@@ -12,8 +14,8 @@
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     margin-left: 0;
-    border-color: #f2f2f2;
-    background-color: #f2f2f2;
+    border-color: $Color-Theme-9-1-hex;
+    background-color: $Color-Theme-9-1-hex;
     border-width: medium;
     padding: 0.4rem;
     border-top-right-radius: 10px;
@@ -39,17 +41,17 @@
     border: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    border-color: #0a2326;
-    background-color: #0a2326;
+    border-color: $Color-Theme-9-3-hex;
+    background-color: $Color-Theme-9-3-hex;
     border-style: solid;
     cursor: pointer;
-    color: #f2f2f2;
+    color: $Color-Theme-9-1-hex;
     &:focus-visible {
       outline: none;
     }
     &:hover {
-      border-color: #83a64e;
-      background-color: #83a64e;
+      border-color: $Color-Theme-9-4-hex;
+      background-color: $Color-Theme-9-4-hex;
     }
   }
 }

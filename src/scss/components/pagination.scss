@@ -1,3 +1,5 @@
+@import "../base.scss";
+
 .pagination {
   display: flex;
   list-style-type: none;
@@ -19,7 +21,7 @@
     border: none;
     text-decoration: none;
     &.pagination__item--active {
-      background-color: #83a64e;
+      background-color: $Color-Theme-9-4-hex;
     }
 
     &.pagination__item--dots:hover {
