@@ -1,15 +1,15 @@
 .header {
   width: 100%;
   background-color: #475459;
-}
 
-.header__logo {
-  display: flex;
-  justify-content: flex-start;
-}
+  .header__logo {
+    display: flex;
+    justify-content: flex-start;
+  }
 
-.header__image {
-  width: 200px; /* width of container */
-  height: 70px; /* height of container */
-  object-fit: cover;
+  .header__image {
+    width: 200px; /* width of container */
+    height: 70px; /* height of container */
+    object-fit: cover;
+  }
 }

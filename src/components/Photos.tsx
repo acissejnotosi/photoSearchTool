@@ -22,7 +22,7 @@ const Photos = (): JSX.Element => {
   if (data.response !== undefined)
     return (
       <div className="l-grid--box l-content__result">
-        <div className="l-grid-photos">
+        <div className="l-grid__photos">
           {data?.response.results.map((photo: Basic) => {
             return <Photo id={photo.id} />;
           })}{" "}

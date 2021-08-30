@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 
 const Header = (): JSX.Element => {
   return (
-    <header className="header wrapper">
+    <header className="header l-grid__header--wrapper">
       <div className="l-grid__header__content">
         <Link to="/">
           <div className="header__logo">
