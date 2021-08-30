@@ -20,56 +20,58 @@ const Photo = ({ id }: PhotoType): JSX.Element => {
   };
   if (photo) {
     return (
-      // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-      <div
-        className="photo"
-        onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
-      >
-        <img
-          className="photo__img "
-          src={photo.urls.small}
-          alt=""
-          style={
-            hideOptions ? { filter: "none" } : { filter: "brightness(50%)" }
-          }
-        />
-        <a
-          className="photo__button photo__button--download"
-          hidden={hideOptions}
-          href={`${photo.links.download}?force=true`}
-          target=""
-          rel="noreferrer"
+      <div className="photo">
+        {/* eslint-disable-next-line jsx-a11y/mouse-events-have-key-events */}
+        <figure
+          className="photo__figure"
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
         >
-          <i className="photo__download-i" />{" "}
-        </a>
-        {photo.user.portfolio_url ? (
+          <img
+            className="photo__img "
+            src={photo.urls.small}
+            alt=""
+            style={
+              hideOptions ? { filter: "none" } : { filter: "brightness(50%)" }
+            }
+          />
           <a
-            className="photo__user-link"
-            href={photo.user.portfolio_url}
+            className="photo__button photo__button--download"
             hidden={hideOptions}
+            href={`${photo.links.download}?force=true`}
+            target=""
+            rel="noreferrer"
           >
-            <span className="photo__user-name">
-              Photo by {photo.user.first_name} {photo.user.last_name} on
-              Unsplash{" "}
-            </span>
+            <i className="photo__download-i" />{" "}
           </a>
-        ) : (
-          <>
-            <span
-              className="photo__user-name"
-              style={
-                hideOptions
-                  ? { visibility: "hidden" }
-                  : { visibility: "visible" }
-              }
+          {photo.user.portfolio_url ? (
+            <a
+              className="photo__user-link"
+              href={photo.user.portfolio_url}
+              hidden={hideOptions}
             >
-              Photo by {photo.user.first_name}
-              {photo.user.last_name}
-              on Unsplash{" "}
-            </span>
-          </>
-        )}
+              <figcaption className="photo__user-name">
+                Photo by {photo.user.first_name} {photo.user.last_name} on
+                Unsplash{" "}
+              </figcaption>
+            </a>
+          ) : (
+            <>
+              <figcaption
+                className="photo__user-name"
+                style={
+                  hideOptions
+                    ? { visibility: "hidden" }
+                    : { visibility: "visible" }
+                }
+              >
+                Photo by {photo.user.first_name}
+                {photo.user.last_name}
+                on Unsplash{" "}
+              </figcaption>
+            </>
+          )}
+        </figure>
       </div>
     );
   }

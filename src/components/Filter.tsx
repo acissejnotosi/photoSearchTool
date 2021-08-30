@@ -131,13 +131,13 @@ const Filter = (): JSX.Element => {
           <option value="latest">Latest</option>
         </select>
       </div>
-      <div className="filter__term">
+      <h1 className="filter__term">
         {query.query.length > 20 ? (
           <> Results for &quot;{query.query.slice(0, 20)}...&quot; </>
         ) : (
           <> Results for&quot;{query.query}&quot; </>
         )}
-      </div>
+      </h1>
     </div>
   );
 };

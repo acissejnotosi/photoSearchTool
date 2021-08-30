@@ -1,5 +1,3 @@
-//styles for every component necessary for that project, including buttons, modals, etc.
-
 .photo__img {
   width: 100% !important;
   height: auto !important;
@@ -11,6 +9,10 @@
 
 .photo {
   position: relative;
+}
+
+.photo__figure {
+  margin: 0;
 }
 
 .photo__button {
@@ -54,7 +56,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  font-size: 50%;
+  font-size: 65%;
   color: white;
   margin: 20px;
   text-decoration: none;

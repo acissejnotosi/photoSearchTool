@@ -74,17 +74,17 @@ const Pagination = (): JSX.Element => {
   return (
     <div className="pagination">
       {/* Left navigation arrow */}
-      <button
+      <a
+        href="#top"
         className={
           currentPage === 1
             ? "pagination__item  pagination__item--disabled"
             : "pagination__item"
         }
         onClick={onPrevious}
-        type="button"
       >
         <div className="pagination__arrow pagination__arrow--left" />
-      </button>
+      </a>
       {paginationRange.map((number) => {
         // If the pageItem is a DOT, render the DOTS unicode character
         if (number === DOTS) {
@@ -111,17 +111,17 @@ const Pagination = (): JSX.Element => {
       })}
 
       {/*  Right Navigation arrow */}
-      <button
-        type="button"
+      <a
         className={
           currentPage === lastPage
             ? "pagination__item  pagination__item--disabled"
             : "pagination__item"
         }
         onClick={onNext}
+        href="#top"
       >
         <div className="pagination__arrow pagination__arrow--right" />
-      </button>
+      </a>
     </div>
   );
 };

@@ -6,10 +6,10 @@ const Error = (): JSX.Element => {
   return (
     <div className="error">
       <img src={paneImage} alt="" />
-      <div className="error__message">
+      <h1 className="error__message">
         Unfortunately, it was not possible to search through the photos due to
         an error or errors.
-      </div>
+      </h1>
     </div>
   );
 };

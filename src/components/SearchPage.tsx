@@ -35,9 +35,9 @@ const SearchPage = (): JSX.Element => {
       </div>
       {errors.length > 0 ? <Error /> : <></>}
       {query.query === "" && errors === [] ? (
-        <div className="ready">
+        <h1 className="ready">
           Search for any term using the search bar above
-        </div>
+        </h1>
       ) : (
         <Switch>
           <Route path="/search/" exact>
