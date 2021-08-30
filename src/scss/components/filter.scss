@@ -6,6 +6,10 @@
   align-items: center;
   height: inherit;
 
+  &.filter--centered {
+    justify-content: center;
+  }
+
   .filter__custom {
     position: relative;
     font-family: Arial;

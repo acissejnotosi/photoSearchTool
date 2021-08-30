@@ -1,25 +1,31 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createApi } from "unsplash-js";
+import { createApi, OrderBy } from "unsplash-js";
 import { Data, Query } from "../../shared/types";
 import { AppDispatch, RootState } from "../store";
-
-const API = createApi({
-  accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY as string,
-});
 
 interface MyKnownError {
   errorMessage: string;
 }
 
-const resp: Data = {} as Data;
-
 interface StateType {
-  resp: Data;
+  photosByQuery: Data;
   errors: [];
+  photosList: Data;
 }
 
-const initialState: StateType = { resp, errors: [] };
+interface PhotosListQuery {
+  page: number;
+  perPage: number;
+  orderBy: OrderBy | undefined;
+}
+
+const photosByQuery: Data = {} as Data;
+const photosList: Data = {} as Data;
+const initialState: StateType = { photosByQuery, errors: [], photosList };
+const API = createApi({
+  accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY as string,
+});
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const fetchData: any = createAsyncThunk<
@@ -32,8 +38,27 @@ export const fetchData: any = createAsyncThunk<
     };
     rejectValue: MyKnownError;
   }
->("data/fetchByQuery", async (query, thunkAPI) => {
+>("data/fetchSinglePageByQuery", async (query, thunkAPI) => {
   const response = await API.search.getPhotos(query);
+  if (response.status === 400) {
+    return thunkAPI.rejectWithValue(response as unknown as MyKnownError);
+  }
+  return response as unknown as Data;
+});
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const fetchAll: any = createAsyncThunk<
+  Data,
+  PhotosListQuery,
+  {
+    dispatch: AppDispatch;
+    extra: {
+      jwt: string;
+    };
+    rejectValue: MyKnownError;
+  }
+>("data/fetchSinglePageFromAllPhotos", async (query, thunkAPI) => {
+  const response = await API.photos.list(query);
   if (response.status === 400) {
     return thunkAPI.rejectWithValue(response as unknown as MyKnownError);
   }
@@ -46,9 +71,21 @@ export const dataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, { payload }) => {
-      state.resp = payload;
+      state.photosByQuery = payload;
+      state.errors = [];
     });
     builder.addCase(fetchData.rejected, (state, action) => {
+      if (action.payload) {
+        state.errors = action.payload.errors;
+      } else {
+        state.errors = action.error.toString();
+      }
+    });
+    builder.addCase(fetchAll.fulfilled, (state, { payload }) => {
+      state.photosList = payload;
+      state.errors = [];
+    });
+    builder.addCase(fetchAll.rejected, (state, action) => {
       if (action.payload) {
         state.errors = action.payload.errors;
       } else {

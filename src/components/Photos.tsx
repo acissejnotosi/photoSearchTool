@@ -13,23 +13,34 @@ const Photos = (): JSX.Element => {
   const searchParams = new URLSearchParams(location.search);
   const term = searchParams.get(TERM);
   const dispatch = useAppDispatch();
-  const data = useAppSelector((state) => state.data.resp);
+  const photosQuery = useAppSelector((state) => state.data.photosByQuery);
+  const photosList = useAppSelector((state) => state.data.photosList);
 
   useEffect(() => {
     if (term) dispatch(updateQuery(term));
   }, [term, dispatch]);
 
-  if (data.response !== undefined)
-    return (
-      <div className="l-grid--box l-content__result">
+  if (location.pathname === "/search/") {
+    if (photosQuery.response !== undefined)
+      return (
         <div className="l-grid__photos">
-          {data?.response.results.map((photo: Basic) => {
-            return <Photo id={photo.id} />;
+          {photosQuery?.response.results.map((photo: Basic) => {
+            return <Photo photo={photo} />;
           })}{" "}
         </div>
-      </div>
-    );
+      );
+  }
 
+  if (location.pathname === "/") {
+    if (photosList.response !== undefined)
+      return (
+        <div className="l-grid__photos">
+          {photosList?.response.results.map((photo: Basic) => {
+            return <Photo photo={photo} />;
+          })}{" "}
+        </div>
+      );
+  }
   return <></>;
 };
 

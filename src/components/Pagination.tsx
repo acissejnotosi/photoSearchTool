@@ -18,7 +18,7 @@ const Pagination = (): JSX.Element => {
 
   // From Redux Store
   const dispatch = useAppDispatch();
-  const data: Data = useAppSelector((state) => state.data.resp);
+  const data: Data = useAppSelector((state) => state.data.photosByQuery);
   const query: Query = useAppSelector((state) => state.query);
 
   // Constants for pagination rendering

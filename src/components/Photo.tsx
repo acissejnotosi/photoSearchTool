@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useAppSelector } from "../redux/hooks";
-import { Basic, Data } from "../shared/types";
+import { Basic } from "../shared/types";
 
 type PhotoType = {
-  id: string;
+  photo: Basic | undefined;
 };
 
-const Photo = ({ id }: PhotoType): JSX.Element => {
+const Photo = ({ photo }: PhotoType): JSX.Element => {
   const [hideOptions, setHideOptions] = useState<boolean>(true);
-  const data: Data = useAppSelector((state) => state.data.resp);
+  /*  const data: Data = useAppSelector((state) => state.data.photosByQuery);
   let photo: Basic | undefined;
   if (data.response !== undefined)
-    photo = data?.response.results.find((element) => element.id === id);
+    photo = data?.response.results.find((element) => element.id === id); */
+
   const handleMouseOver = () => {
     setHideOptions(false);
   };
