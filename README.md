@@ -1,18 +1,18 @@
 # Photo Finder Website
 
-It is a photo search engine using the Unsplash API. Through Photo Finder the user can search for photos and even filter by orientation, color and sort by most relevant or recently posted photos.
+It is a photo search engine using the [Unsplash API](Take a look on it and enjoy.). Through Photo Finder the user can search for photos and even filter by orientation, color and sort by most relevant or recently posted photos.
 
-The photos finder was built with React framework and Typescript.Also, SCSS syntax was used for the styling of the website.
+The photos finder was built with React framework and Typescript. Also, SCSS syntax was used for the styling of the website.
 
 The Redux Toolkit library was used to control the application's state. One of the challenges encountered during development was managing asynchronous calls with [createAsyncThunk](https://redux.js.org/tutorials/fundamentals/part-6-async-logic#using-the-redux-thunk-middleware).
 
-#Production Version
+# Production Version
 
 The production version is available on [Versel](https://vercel.com/) through the [this link](https://photo-search-tool.vercel.app/)
 
-#How to Use Your Project
+# How to Use Your Project
 
-After downloading the project, install the packages via the command "npm install". After that, simply run the project with the command "npm start".This way the project can be run in the browser.
+After downloading the project, install the packages via the command ["npm install"](### `npm install`). After that, simply run the project with the command ["npm start"](### `npm start`).This way the project can be run in the browser.
 
 ## Available Scripts
 
