@@ -81,10 +81,11 @@ const SearchPage = (): JSX.Element => {
         </div>
         <div className="l-grid--box l-grid__tool-bar">
           <div className="filter filter--centered">
-            <h1 className="filter__term">No photos found</h1>
+            <Filter />
           </div>
         </div>
-        <div className="l-grid--box l-content__result">
+        <div className="l-grid--box l-grid__result">
+          <h2 className="l-grid__result-not-found">No photos found</h2>
           <Photos />
         </div>
         <div className="l-grid--box l-grid__footer">
@@ -107,7 +108,7 @@ const SearchPage = (): JSX.Element => {
                 <h1 className="filter__term">Latest Photos</h1>
               </div>
             </div>
-            <div className="l-grid--box l-content__result">
+            <div className="l-grid--box l-grid__result">
               <Photos />
             </div>
           </>
@@ -130,7 +131,7 @@ const SearchPage = (): JSX.Element => {
         <Route path="/search/" exact>
           {results.photosByQuery.response?.results.length > 0 ? (
             <>
-              <div className="l-grid--box l-content__result">
+              <div className="l-grid--box l-grid__result">
                 <Photos />
               </div>
               <div className="l-grid--box l-grid__tool-bar">

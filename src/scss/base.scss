@@ -18,6 +18,24 @@ body {
     font-family: "Pacifico";
   }
   h2 {
-    font-family: "Pacifico";
+    font-family: "Lato";
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 150%;
+  }
+  h2 {
+    font-size: 100%;
+  }
+}
+
+@media (max-width: 1800px) {
+  h1 {
+    font-size: 200%;
+  }
+  h2 {
+    font-size: 150%;
   }
 }
