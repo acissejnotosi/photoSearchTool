@@ -8,9 +8,9 @@ The Redux Toolkit library was used to control the application's state. One of th
 
 # Production Version
 
-The production version is available on [Versel](https://vercel.com/) through the [this link](https://photo-search-tool.vercel.app/)
+The production version is available on [Vercel](https://vercel.com/) through the [this link](https://photo-search-tool.vercel.app/)
 
-# How to Use Your Project
+# How to Use
 
 After downloading the project, install the packages via the command `npm install`. After that, simply run the project with the command `npm start`.This way the project can be run in the browser.
 
