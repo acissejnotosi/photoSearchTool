@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
+import uniqid from "uniqid";
 import { usePagination } from "../hooks/usePagination";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { updatePage } from "../redux/slices/query";
@@ -28,9 +29,7 @@ const Pagination = (): JSX.Element => {
   const DOTS = "...";
 
   // Local State to control page
-  const [pageNumber, setPageNumber] = useState<number>(
-    Number(searchParams?.get(PAGE)) || currentPage
-  );
+  const [pageNumber, setPageNumber] = useState<number>(currentPage);
 
   // Hook for pagination range calculation
   const paginationRange = usePagination({
@@ -89,7 +88,10 @@ const Pagination = (): JSX.Element => {
         // If the pageItem is a DOT, render the DOTS unicode character
         if (number === DOTS) {
           return (
-            <span className="pagination__item pagination__item--dots">
+            <span
+              key={uniqid()}
+              className="pagination__item pagination__item--dots"
+            >
               &#8230;
             </span>
           );
@@ -97,6 +99,7 @@ const Pagination = (): JSX.Element => {
         // Render our Page Pills
         return (
           <a
+            key={uniqid()}
             className={
               number === currentPage
                 ? "pagination__item pagination__item--active"

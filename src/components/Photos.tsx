@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import uniqid from "uniqid";
 import { Basic } from "../shared/types";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import Photo from "./Photo";
@@ -25,7 +26,7 @@ const Photos = (): JSX.Element => {
       return (
         <div className="l-grid__photos">
           {photosQuery?.response.results.map((photo: Basic) => {
-            return <Photo photo={photo} />;
+            return <Photo key={uniqid()} photo={photo} />;
           })}{" "}
         </div>
       );
@@ -36,7 +37,7 @@ const Photos = (): JSX.Element => {
       return (
         <div className="l-grid__photos">
           {photosList?.response.results.map((photo: Basic) => {
-            return <Photo photo={photo} />;
+            return <Photo key={uniqid()} photo={photo} />;
           })}{" "}
         </div>
       );

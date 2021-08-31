@@ -98,9 +98,9 @@ const Filter = (): JSX.Element => {
         <select
           className="filter__select"
           onChange={(event) => handleOrientation(event)}
-          value={orientation}
+          value={orientation || ""}
         >
-          <option>All Orientations</option>
+          <option value="All Orientations">All Orientations</option>
           <option value="landscape">Landscape</option>
           <option value="portrait">Portrait</option>
           <option value="squarish">Squarish</option>
@@ -108,9 +108,9 @@ const Filter = (): JSX.Element => {
         <select
           className="filter__select"
           onChange={(event) => handleColor(event)}
-          value={color}
+          value={color || ""}
         >
-          <option>Colorful</option>
+          <option value="Colorful">Colorful</option>
           <option value="black_and_white">Black and White</option>
           <option value="black">Black</option>
           <option value="white">White</option>
@@ -125,7 +125,7 @@ const Filter = (): JSX.Element => {
         <select
           className="filter__select"
           onChange={(event) => handleSearchBy(event)}
-          value={searchBy}
+          value={searchBy || ""}
         >
           <option value="relevant">Relevant</option>
           <option value="latest">Latest</option>

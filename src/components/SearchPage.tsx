@@ -70,31 +70,6 @@ const SearchPage = (): JSX.Element => {
     );
   }
 
-  if (
-    results.photosByQuery.response?.results.length <= 0 &&
-    query.query !== ""
-  ) {
-    return (
-      <div className="l-grid">
-        <div className="l-grid--box l-grid__header">
-          <Header />
-        </div>
-        <div className="l-grid--box l-grid__tool-bar">
-          <div className="filter filter--centered">
-            <Filter />
-          </div>
-        </div>
-        <div className="l-grid--box l-grid__result">
-          <h2 className="l-grid__result-not-found">No photos found</h2>
-          <Photos />
-        </div>
-        <div className="l-grid--box l-grid__footer">
-          <Footer />
-        </div>
-      </div>
-    );
-  }
-
   if (query.query === "" && errors.length <= 0) {
     return (
       <div className="l-grid">
@@ -122,7 +97,25 @@ const SearchPage = (): JSX.Element => {
     );
   }
 
-  return (
+  return results.photosByQuery.response?.results.length <= 0 ? (
+    <div className="l-grid">
+      <div className="l-grid--box l-grid__header">
+        <Header />
+      </div>
+      <div className="l-grid--box l-grid__tool-bar">
+        <div className="filter filter--centered">
+          <Filter />
+        </div>
+      </div>
+      <div className="l-grid--box l-grid__result">
+        <h2 className="l-grid__result-not-found">No photos found</h2>
+        <Photos />
+      </div>
+      <div className="l-grid--box l-grid__footer">
+        <Footer />
+      </div>
+    </div>
+  ) : (
     <div className="l-grid">
       <div className="l-grid--box l-grid__header">
         <Header />
