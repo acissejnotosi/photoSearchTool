@@ -12,7 +12,7 @@ The production version is available on [Versel](https://vercel.com/) through the
 
 # How to Use Your Project
 
-After downloading the project, install the packages via the command ["npm install"](`npm install`). After that, simply run the project with the command ["npm start"](`npm start`).This way the project can be run in the browser.
+After downloading the project, install the packages via the command (`npm install`). After that, simply run the project with the command (`npm start`).This way the project can be run in the browser.
 
 ## Available Scripts
 
