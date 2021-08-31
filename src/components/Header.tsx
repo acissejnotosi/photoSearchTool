@@ -7,11 +7,11 @@ const Header = (): JSX.Element => {
   return (
     <header className="header l-grid__header--wrapper">
       <div className="l-grid__header__content">
-        <Link to="/">
+        <a href="/">
           <div className="header__logo">
             <img className="header__image" src={logo} alt="" />
           </div>
-        </Link>
+        </a>
         <SearchBar />
       </div>
     </header>
