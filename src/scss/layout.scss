@@ -8,6 +8,7 @@ body {
   background-color: $Color-Theme-9-1-hex;
   font-family: "Raleway", sans-serif;
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
   font-size: 100%;
 }
@@ -15,19 +16,19 @@ body {
 .l-grid {
   display: grid;
   grid-gap: 1em;
-  //width: 100%;
   grid-template-areas:
     "header"
     "toolbar"
     "result"
     "pagination"
     "footer";
-  max-width: 100%;
+  position: relative;
 
   .l-grid__header {
     width: 100%;
     z-index: 1;
     position: sticky;
+    height: 5vh;
     top: 0;
     grid-area: header;
     display: flex;
@@ -44,8 +45,11 @@ body {
   .l-content__result {
     width: 100%;
     grid-area: result;
+    min-height: 100%;
+    height: fit-content;
     &.box {
       padding-left: 0;
+      min-height: 0;
     }
   }
 
@@ -59,6 +63,7 @@ body {
     font-size: 150%;
     padding: 10px;
     width: 100%;
+    //min-height: 5vh;
   }
 
   .l-grid__pagination {
@@ -72,7 +77,10 @@ body {
     grid-area: footer;
     width: 100%;
     text-align: center;
+    height: 8vh;
     background-color: $Color-Theme-9-2-hex;
+    bottom: 0;
+    left: 0;
   }
 
   .l-grid__photos {
@@ -105,6 +113,7 @@ body {
 @media only screen and (min-width: 500px) {
   .l-grid {
     grid-template-columns: 20% auto;
+    grid-template-rows: max-content;
     grid-template-areas:
       "header header "
       "toolbar toolbar"
@@ -112,12 +121,14 @@ body {
       "pagination pagination"
       "footer footer";
     max-width: 100%;
+    height: 100vh;
   }
 }
 
 @media only screen and (min-width: 1400px) {
   .l-grid {
     grid-template-columns: 20% auto 20%;
+    grid-template-rows: auto 5% 1fr auto auto;
     grid-template-areas:
       "header header header"
       "... toolbar ..."
@@ -125,6 +136,7 @@ body {
       "... pagination ..."
       "footer  footer  footer";
     max-width: 100%;
+    height: 100vh;
   }
 }
 

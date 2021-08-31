@@ -30,7 +30,7 @@ const SearchPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const query = useAppSelector((state) => state.query);
   const errors = useAppSelector((state) => state.data.errors);
-
+  const results = useAppSelector((state) => state.data);
   useEffect(() => {
     async function fetschAllData() {
       const response = await dispatch(fetchAll(PHOTOS_LIST_QUERY));
@@ -56,41 +56,98 @@ const SearchPage = (): JSX.Element => {
     handleUpdateData();
   }, [dispatch, history, query]);
 
+  if (errors.length > 0) {
+    return (
+      <div className="l-grid">
+        <div className="l-grid--box l-grid__header">
+          <Header />
+        </div>
+        <Error />
+        <div className="l-grid--box l-grid__footer">
+          <Footer />
+        </div>
+      </div>
+    );
+  }
+
+  if (
+    results.photosByQuery.response?.results.length <= 0 &&
+    query.query !== ""
+  ) {
+    return (
+      <div className="l-grid">
+        <div className="l-grid--box l-grid__header">
+          <Header />
+        </div>
+        <div className="l-grid--box l-grid__tool-bar">
+          <div className="filter filter--centered">
+            <h1 className="filter__term">No photos found</h1>
+          </div>
+        </div>
+        <div className="l-grid--box l-content__result">
+          <Photos />
+        </div>
+        <div className="l-grid--box l-grid__footer">
+          <Footer />
+        </div>
+      </div>
+    );
+  }
+
+  if (query.query === "" && errors.length <= 0) {
+    return (
+      <div className="l-grid">
+        <div className="l-grid--box l-grid__header">
+          <Header />
+        </div>
+        {results.photosList.response?.results.length > 0 ? (
+          <>
+            <div className="l-grid--box l-grid__tool-bar">
+              <div className="filter filter--centered">
+                <h1 className="filter__term">Latest Photos</h1>
+              </div>
+            </div>
+            <div className="l-grid--box l-content__result">
+              <Photos />
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+        <div className="l-grid--box l-grid__footer">
+          <Footer />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="l-grid">
       <div className="l-grid--box l-grid__header">
         <Header />
       </div>
-      {errors.length > 0 ? <Error /> : <></>}
-      {query.query === "" && errors.length <= 0 ? (
-        <>
-          <div className="l-grid--box l-grid__tool-bar">
-            <div className="filter filter--centered">
-              <h1 className="filter__term">Latest Photos</h1>
-            </div>
-          </div>
-          <div className="l-grid--box l-content__result">
-            <Photos />
-          </div>
-        </>
-      ) : (
-        <Switch>
-          <Route path="/search/" exact>
-            <div className="l-grid--box l-content__result">
-              <Photos />
-            </div>
-            <div className="l-grid--box l-grid__tool-bar">
-              <Filter />
-            </div>{" "}
-            <div className="l-grid--box l-grid__pagination">
-              <Pagination />
-            </div>
-          </Route>
-        </Switch>
-      )}
-      <div className="l-grid--box l-grid__footer">
-        <Footer />
-      </div>
+      <Switch>
+        <Route path="/search/" exact>
+          {results.photosByQuery.response?.results.length > 0 ? (
+            <>
+              <div className="l-grid--box l-content__result">
+                <Photos />
+              </div>
+              <div className="l-grid--box l-grid__tool-bar">
+                <Filter />
+              </div>{" "}
+              <div className="l-grid--box l-grid__pagination">
+                <Pagination />
+              </div>
+              <div className="l-grid--box l-grid__footer">
+                <Footer />
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </Route>
+      </Switch>
     </div>
   );
 };

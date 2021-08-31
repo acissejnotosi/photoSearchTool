@@ -9,7 +9,7 @@
     height: 32px;
     text-align: center;
     margin: auto 4px;
-    color: rgba(0, 0, 0, 0.87);
+    color: $Color-Theme-9-6;
     display: flex;
     box-sizing: border-box;
     align-items: center;
@@ -29,20 +29,20 @@
       cursor: default;
     }
     &:hover {
-      background-color: rgba(0, 0, 0, 0.04);
+      background-color: $Color-Theme-9-7;
       cursor: pointer;
     }
 
     &.pagination__item--selected {
-      background-color: rgba(0, 0, 0, 0.08);
+      background-color: $Color-Theme-9-8;
     }
 
     &.pagination__item--disabled {
       pointer-events: none;
 
       .pagination__arrow::before {
-        border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-        border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+        border-right: 0.12em solid $Color-Theme-9-9;
+        border-top: 0.12em solid $Color-Theme-9-9;
       }
 
       &:hover {
@@ -61,8 +61,8 @@
       display: inline-block;
       width: 0.4em;
       height: 0.4em;
-      border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-      border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+      border-right: 0.12em solid $Color-Theme-9-6;
+      border-top: 0.12em solid $Color-Theme-9-6;
     }
 
     &.pagination__arrow--left {
